@@ -3,11 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-<title>Arkeologens Reise</title>
+<title>Arkeologens Reise 4.1</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <canvas id="game"></canvas>
+
 <section id="intro" class="active">
   <div class="copy">
     <h1>ARKEOLOGENS REISE</h1>
@@ -15,12 +16,28 @@
     <button id="start">START REISEN</button>
   </div>
 </section>
-<section id="dialog" class="hidden"><b>AURORA</b><p id="dialogText"></p></section>
-<section id="hud" class="hidden"><span id="objective">Finn inngangen</span><span id="progress">1 / 4</span></section>
-<section id="controls" class="hidden">
-  <div><button data-a="left">◀</button><button data-a="right">▶</button></div>
-  <div><button data-a="jump">HOPP</button><button data-a="interact">UNDERSØK</button></div>
+
+<section id="hud" class="hidden">
+  <span id="objective">Finn inngangen</span>
+  <span id="progress">1 / 4</span>
 </section>
-<script type="module" src="main.js"></script>
+
+<section id="dialog" class="hidden">
+  <b>AURORA</b>
+  <p id="dialogText"></p>
+</section>
+
+<section id="controls" class="hidden">
+  <div>
+    <button id="left">◀</button>
+    <button id="right">▶</button>
+  </div>
+  <div>
+    <button id="jump">HOPP</button>
+    <button id="interact" class="primary">UNDERSØK</button>
+  </div>
+</section>
+
+<script src="game.js"></script>
 </body>
 </html>

@@ -1,17 +1,10 @@
-ARKEOLOGENS REISE – TEKNISK V4
+ARKEOLOGENS REISE 4.1 – IPHONE/GITHUB
 
-Dette er første reelle modulære kodebase.
+Last opp disse fire filene til roten av GitHub-repositoryet:
+- index.html
+- style.css
+- game.js
+- intro.png
 
-Inneholder:
-- Canvas-spillmotor
-- Aurora-klasse med gange og hopp
-- Kamera som følger Aurora
-- Dialogmotor
-- Objektivsystem
-- Første Egypt-scene
-- Første logiske felle
-- Skjult dør
-- Modulær mappestruktur
-
-Startfil: index.html
-Publiser hele innholdet i denne mappen via GitHub Pages.
+Velg Replace når GitHub spør om eksisterende index.html og style.css.
+main.js og de andre gamle JS-filene kan ligge der, men brukes ikke lenger.
