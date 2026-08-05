@@ -1,0 +1,14 @@
+{
+  "hero": "Professor Aurora Vale",
+  "principles": [
+    "Historien belønner tålmodighet",
+    "Se én gang til",
+    "Ingen tradisjonell kamp",
+    "Hvert kapittel har et WOW-øyeblikk"
+  ],
+  "chapter_1": {
+    "name": "Den glemte graven",
+    "trap": "Trykkplate med piler",
+    "wow": "Sollys treffer et gravkammer som har vært lukket i årtusener"
+  }
+}

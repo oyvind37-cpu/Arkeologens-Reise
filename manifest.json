@@ -1,0 +1,9 @@
+{
+  "name": "Arkeologens Reise",
+  "short_name": "Aurora Vale",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0b0704",
+  "theme_color": "#0b0704",
+  "orientation": "landscape"
+}

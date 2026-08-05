@@ -1,0 +1,17 @@
+ARKEOLOGENS REISE – TEKNISK V4
+
+Dette er første reelle modulære kodebase.
+
+Inneholder:
+- Canvas-spillmotor
+- Aurora-klasse med gange og hopp
+- Kamera som følger Aurora
+- Dialogmotor
+- Objektivsystem
+- Første Egypt-scene
+- Første logiske felle
+- Skjult dør
+- Modulær mappestruktur
+
+Startfil: index.html
+Publiser hele innholdet i denne mappen via GitHub Pages.
