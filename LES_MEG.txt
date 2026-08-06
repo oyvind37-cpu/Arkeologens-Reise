@@ -1,4 +1,4 @@
-ARKEOLOGENS REISE 4.7
+ARKEOLOGENS REISE 4.8 – TILBAKE TIL DAGSLYSET
 
 Last opp og erstatt:
 - index.html
@@ -9,12 +9,24 @@ Last opp og erstatt:
 - aurora_face.jpg
 - mystisk_musikk.mp3
 
-Nytt i 4.7:
-- Horus-døren åpnes filmatisk.
-- Cinematiske sorte felt vises under overgangen.
-- Kamera zoomer inn mot passasjen.
-- Skjermen mørkner mens Aurora går gjennom døren.
-- Aurora går automatisk inn i skattekammeret.
-- Spilleren får kontroll først når hun står inne i rommet.
-- Mykere start og stopp ved gange i kammeret.
-- Mindre statisk glidning fra venstre mot høyre.
+Nytt i 4.8:
+- Kompasset registreres i localStorage.
+- Kompasset forsvinner etter at feltdagboken lukkes.
+- Gullkistens glød tones ned.
+- Aurora går automatisk tilbake mot utgangen.
+- Filmisk lys overgang til dagslys.
+- Egen ørkenscene utenfor graven.
+- Lav sol, vind, sanddyner, klipper og leir i det fjerne.
+- Kapittel 1 fullført vises.
+- Nytt mål: Returner til leiren.
+- Aurora kan se tilbake på gravåpningen.
+- Mykene starter ikke umiddelbart.
+
+Testing:
+1. Finn kompasset.
+2. Feltdagboken åpnes.
+3. Trykk LUKK FELTDAGBOKEN.
+4. Kompasset skal forsvinne.
+5. Aurora går automatisk ut.
+6. Ørkenscenen vises.
+7. Gå mot høyre til leiren.

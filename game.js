@@ -228,10 +228,10 @@ function loop(t){
 }
 
 /* ---------- GRAVKAMMER 4.6 ---------- */
-const chamber=$("chamber"),journal=$("journal"),chamberAurora=$("chamberAurora"),chamberCamera=$("chamberCamera"),innerDoor=$("innerDoor"),cinematicBars=$("cinematicBars"),transitionFade=$("transitionFade");
+const chamber=$("chamber"),journal=$("journal"),desert=$("desert"),chamberAurora=$("chamberAurora"),chamberCamera=$("chamberCamera"),innerDoor=$("innerDoor"),cinematicBars=$("cinematicBars"),transitionFade=$("transitionFade"),chamberExitFade=$("chamberExitFade"),inventoryBadge=$("inventoryBadge");
 const chamberText=$("chamberDialogText"),chamberObjective=$("chamberObjective"),chamberProgress=$("chamberProgress");
 const sarcophagus=$("sarcophagus"),symbolPuzzle=$("symbolPuzzle"),treasureChest=$("treasureChest"),compassArtifact=$("compassArtifact");
-let chamberX=7,chamberLeft=false,chamberRight=false,chamberStage=0,glyphs=[];
+let chamberX=7,chamberLeft=false,chamberRight=false,chamberStage=0,glyphs=[],compassCollected=localStorage.getItem("aurora_compass")==="yes";
 
 function chamberSay(text){chamberText.textContent=text}
 function chamberGoal(text,n){chamberObjective.textContent=text;chamberProgress.textContent=n+" / 3"}
@@ -260,7 +260,8 @@ enterChamberBtn.onclick=()=>{
     symbolPuzzle.querySelectorAll("button").forEach(b=>b.classList.remove("selected"));
     sarcophagus.classList.remove("open");
     treasureChest.classList.remove("revealed","open");
-    compassArtifact.classList.remove("show");
+    compassArtifact.classList.remove("show","collected");
+  if(compassCollected){compassArtifact.style.display="none";}else{compassArtifact.style.display="block";}
     chamberGoal("Gå inn i kammeret",1);
     chamberSay("Luften er annerledes her inne... ingen har vært her på svært lenge.");
   },1850);
@@ -344,7 +345,37 @@ $("chamberInspect").onclick=()=>{
   }
 };
 
-$("closeJournal").onclick=()=>show(chamber);
+$("closeJournal").onclick=()=>{
+  if(!compassCollected){
+    compassCollected=true;
+    localStorage.setItem("aurora_compass","yes");
+  }
+  show(chamber);
+  compassArtifact.classList.add("collected");
+  treasureChest.classList.add("finished");
+  inventoryBadge.classList.remove("hidden");
+  setTimeout(()=>inventoryBadge.classList.add("hidden"),2400);
+  chamberSay("Funnet er registrert. Nå må vi tilbake til dagslyset.");
+  chamberGoal("Forlat gravkammeret",3);
+
+  chamberLeft=false;
+  chamberRight=false;
+  chamberVelocity=0;
+
+  setTimeout(()=>{
+    chamberAurora.classList.add("face-left","walk");
+    const exitWalk=setInterval(()=>{
+      chamberX-=1.05;
+      chamberAurora.style.left=chamberX+"%";
+      if(chamberX<=6){
+        clearInterval(exitWalk);
+        chamberAurora.classList.remove("walk");
+        chamberExitFade.classList.add("active");
+        setTimeout(()=>startDesertScene(),1250);
+      }
+    },55);
+  },800);
+};
 
 let chamberVelocity=0;
 function chamberLoop(){
@@ -378,5 +409,68 @@ function chamberLoop(){
   requestAnimationFrame(chamberLoop);
 }
 requestAnimationFrame(chamberLoop);
+
+
+/* ---------- ØRKENSCENE 4.8 ---------- */
+const desertAurora=$("desertAurora"),desertText=$("desertDialogText"),chapterComplete=$("chapterComplete");
+let desertX=20,desertLeft=false,desertRight=false,desertVelocity=0,desertStarted=false;
+
+function desertSay(text){desertText.textContent=text}
+function startDesertScene(){
+  show(desert);
+  desertStarted=true;
+  desertX=20;
+  desertAurora.style.left=desertX+"%";
+  desertSay("Mykene får vente. Først må funnet dokumenteres ordentlig.");
+  setTimeout(()=>{
+    chapterComplete.classList.remove("hidden");
+    setTimeout(()=>chapterComplete.classList.add("hidden"),3200);
+  },900);
+}
+
+function desertHold(id,key){
+  const b=$(id);
+  const down=e=>{e.preventDefault();if(key==="left")desertLeft=true;else desertRight=true};
+  const up=e=>{e.preventDefault();if(key==="left")desertLeft=false;else desertRight=false};
+  ["pointerdown","touchstart"].forEach(t=>b.addEventListener(t,down,{passive:false}));
+  ["pointerup","pointercancel","pointerleave","touchend"].forEach(t=>b.addEventListener(t,up,{passive:false}));
+}
+desertHold("desertLeft","left");
+desertHold("desertRight","right");
+
+$("desertInspect").onclick=()=>{
+  desertAurora.classList.add("face-left");
+  desertSay("Historien har ventet i tre tusen år. Nå skal den dokumenteres med respekt.");
+  setTimeout(()=>desertAurora.classList.remove("face-left"),1800);
+};
+
+function desertLoop(){
+  if(desert.classList.contains("active")){
+    if(desertLeft){
+      desertVelocity=Math.max(desertVelocity-.06,-.48);
+      desertAurora.classList.add("face-left","walk");
+    }else if(desertRight){
+      desertVelocity=Math.min(desertVelocity+.06,.48);
+      desertAurora.classList.remove("face-left");
+      desertAurora.classList.add("walk");
+    }else{
+      desertVelocity*=.72;
+      if(Math.abs(desertVelocity)<.02){
+        desertVelocity=0;
+        desertAurora.classList.remove("walk");
+      }
+    }
+    desertX+=desertVelocity;
+    desertX=Math.max(7,Math.min(82,desertX));
+    desertAurora.style.left=desertX+"%";
+
+    if(desertX>70){
+      $("desertObjective").textContent="Leiren er nådd";
+      desertSay("Først fotografier, målinger og konservering. Deretter kan vi planlegge reisen videre.");
+    }
+  }
+  requestAnimationFrame(desertLoop);
+}
+requestAnimationFrame(desertLoop);
 
 })();

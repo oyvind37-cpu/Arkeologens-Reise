@@ -61,6 +61,7 @@
     <div id="dialog" class="dialog"><div class="dialog-face"></div><div><b>AURORA</b><p id="dialogText">Vi tar det rolig. Gå mot høyre og se etter noe uvanlig.</p></div></div>
 
     <div id="nearHint" class="near-hint hidden">UNDERSØK HORUS-ØYET</div>
+    <div id="inventoryBadge" class="inventory-badge hidden">✓ DET TAPTE KOMPASSET</div>
     <button id="enterChamberBtn" class="enter-chamber hidden">GÅ INN I SKATTEKAMMERET</button>
 
     <div class="controls">
@@ -123,6 +124,7 @@
     </div>
 
     </div>
+    <div id="chamberExitFade" class="chamber-exit-fade"></div>
     <div id="cinematicBars" class="cinematic-bars hidden">
       <div class="bar top"></div><div class="bar bottom"></div>
     </div>
@@ -144,6 +146,59 @@
     </div>
   </section>
 
+  
+  <section id="desert" class="screen desert-screen">
+    <div class="desert-sky"></div>
+    <div class="desert-sun"></div>
+    <div class="distant-cliffs"></div>
+    <div class="dunes dunes-a"></div>
+    <div class="dunes dunes-b"></div>
+    <div class="grave-entrance">
+      <div class="grave-shadow"></div>
+      <div class="grave-door"></div>
+    </div>
+    <div class="camp">
+      <div class="tent tent-a"></div>
+      <div class="tent tent-b"></div>
+      <div class="jeep">▰</div>
+      <div class="camp-light"></div>
+    </div>
+    <div class="desert-wind"></div>
+
+    <div id="desertAurora" class="desert-aurora">
+      <div class="desert-shadow"></div>
+      <div class="desert-body">
+        <div class="desert-head"><div class="desert-face"></div><div class="desert-hair"></div></div>
+        <div class="desert-torso"></div>
+        <div class="desert-arm arm-l"></div><div class="desert-arm arm-r"></div>
+        <div class="desert-leg leg-l"></div><div class="desert-leg leg-r"></div>
+        <div class="desert-pack"></div>
+      </div>
+    </div>
+
+    <div class="desert-hud">
+      <div><b>KONGENES DAL</b><small>Utenfor den glemte graven</small></div>
+      <div><b id="desertObjective">Returner til leiren</b><small>Kapittel 1</small></div>
+    </div>
+
+    <div class="desert-dialog">
+      <div class="dialog-face"></div>
+      <div><b>AURORA</b><p id="desertDialogText">Mykene får vente. Først må funnet dokumenteres ordentlig.</p></div>
+    </div>
+
+    <div class="desert-controls">
+      <button id="desertLeft">◀</button>
+      <button id="desertRight">▶</button>
+      <button id="desertInspect">SE TILBAKE</button>
+    </div>
+
+    <div id="chapterComplete" class="chapter-complete hidden">
+      <h2>KAPITTEL 1 FULLFØRT</h2>
+      <p>Det tapte kompasset er funnet.</p>
+      <small>Neste mål: Leiren i Kongenes dal</small>
+    </div>
+  </section>
+
   <section id="journal" class="screen journal-screen">
     <div class="journal-book">
       <div class="journal-page">
@@ -161,7 +216,7 @@
           «Et kompass, men nålen peker ikke mot nord. Symbolene antyder en forbindelse til Mykene.
           Dette er ikke slutten på funnet – det er begynnelsen på reisen.»
         </blockquote>
-        <button id="closeJournal">TILBAKE TIL KAMMERET</button>
+        <button id="closeJournal">LUKK FELTDAGBOKEN</button>
       </div>
     </div>
   </section>

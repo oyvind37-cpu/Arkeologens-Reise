@@ -371,3 +371,120 @@ button{font:inherit;color:inherit;border:0}.screen{display:none;position:absolut
 .chamber-aurora.stop-step{animation:settleStep .22s ease-out}
 @keyframes bodySway{from{transform:rotate(-1.5deg)}to{transform:rotate(1.5deg)}}
 @keyframes settleStep{0%{transform:translateY(-2px)}100%{transform:translateY(0)}}
+
+/* 4.8: funnet registreres, utgang og ørkenscene */
+.inventory-badge{
+  position:absolute;z-index:130;top:26%;left:50%;transform:translateX(-50%);
+  padding:.7rem 1rem;border:1px solid #d7ad55;border-radius:999px;
+  background:rgba(0,0,0,.82);color:#f2c86b;font-size:.8rem;font-weight:900;
+  box-shadow:0 0 25px rgba(235,184,78,.38);animation:badgeIn 2.4s ease forwards;
+}
+@keyframes badgeIn{0%{opacity:0;transform:translate(-50%,-12px)}20%,75%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-50%,-12px)}}
+
+.compass-artifact.collected{animation:collectCompass 1s ease forwards}
+@keyframes collectCompass{
+  0%{opacity:1;transform:translate(-50%,-30px) scale(1)}
+  55%{opacity:1;transform:translate(-50%,-70px) scale(.72)}
+  100%{opacity:0;transform:translate(-50%,-105px) scale(.2)}
+}
+.treasure-chest.finished .treasure-glow{opacity:0;transition:1s}
+.treasure-chest.finished .treasure-lid{transform:rotate(0) translate(0,0);transition:1s}
+.chamber-exit-fade{
+  position:absolute;inset:0;z-index:210;background:#f7d99a;opacity:0;pointer-events:none;
+}
+.chamber-exit-fade.active{animation:exitFlash 2.2s ease forwards}
+@keyframes exitFlash{0%{opacity:0}42%{opacity:1}66%{opacity:1}100%{opacity:0}}
+
+.desert-screen{background:#9f6d35;overflow:hidden}
+.desert-sky{
+  position:absolute;inset:0;
+  background:linear-gradient(#6f8da1 0,#d6aa70 47%,#c98a45 72%,#6b4327 100%);
+}
+.desert-sun{
+  position:absolute;right:13%;top:13%;width:92px;height:92px;border-radius:50%;
+  background:radial-gradient(circle,#fff0ad 0 28%,#f5ba58 50%,rgba(245,186,88,.12) 72%,transparent 73%);
+  filter:drop-shadow(0 0 30px #f3b455);
+}
+.distant-cliffs{
+  position:absolute;left:-5%;right:-5%;bottom:32%;height:36%;
+  background:
+    polygon(0 100%,0 45%,12% 28%,22% 52%,36% 18%,49% 48%,61% 25%,75% 55%,87% 20%,100% 47%,100% 100%);
+  clip-path:polygon(0 100%,0 45%,12% 28%,22% 52%,36% 18%,49% 48%,61% 25%,75% 55%,87% 20%,100% 47%,100% 100%);
+  background:#6e4a30;opacity:.72;
+}
+.dunes{position:absolute;left:-10%;right:-10%;border-radius:50% 50% 0 0}
+.dunes-a{bottom:12%;height:32%;background:#c58a43;transform:rotate(-2deg)}
+.dunes-b{bottom:-4%;height:30%;background:#9d642f;transform:rotate(3deg)}
+.grave-entrance{
+  position:absolute;left:9%;bottom:24%;width:190px;height:230px;
+  border:10px solid #6e4b2c;border-bottom:0;background:#17100a;
+  box-shadow:0 10px 24px rgba(0,0,0,.55);
+}
+.grave-shadow{position:absolute;inset:0;background:radial-gradient(circle at 50% 85%,#25170d,#000 72%)}
+.grave-door{
+  position:absolute;left:18px;right:18px;top:18px;bottom:0;
+  background:linear-gradient(#46301d,#21160d);transform:translateY(-105%);animation:doorReturn 2.4s 1.2s ease forwards;
+}
+@keyframes doorReturn{to{transform:translateY(0)}}
+.camp{position:absolute;right:8%;bottom:23%;width:250px;height:130px}
+.tent{position:absolute;bottom:0;width:105px;height:70px;background:#8f6a3d;clip-path:polygon(50% 0,100% 100%,0 100%);filter:drop-shadow(0 8px 8px rgba(0,0,0,.4))}
+.tent-a{left:0}.tent-b{left:82px;transform:scale(.82)}
+.jeep{position:absolute;right:0;bottom:0;color:#31261c;font-size:3rem;transform:scaleX(1.4)}
+.camp-light{position:absolute;left:90px;bottom:18px;width:24px;height:24px;border-radius:50%;background:#ffcd65;box-shadow:0 0 22px #ffb642}
+.desert-wind:before,.desert-wind:after{
+  content:"";position:absolute;left:-25%;top:58%;width:140%;height:4px;
+  background:linear-gradient(90deg,transparent,rgba(255,228,174,.38),transparent);
+  filter:blur(2px);animation:windLine 4.5s linear infinite;
+}
+.desert-wind:after{top:68%;animation-delay:-2.2s}
+@keyframes windLine{from{transform:translateX(-15%)}to{transform:translateX(22%)}}
+
+.desert-aurora{
+  position:absolute;left:20%;bottom:23%;width:102px;height:180px;z-index:30;
+  transition:left .08s ease-out;transform-origin:50% 100%;
+}
+.desert-aurora.face-left .desert-body{transform:scaleX(-1)}
+.desert-aurora.walk{animation:bob .3s infinite alternate}
+.desert-shadow{position:absolute;left:8px;bottom:-5px;width:84px;height:17px;border-radius:50%;background:rgba(0,0,0,.42)}
+.desert-body{position:absolute;inset:0;transform-origin:center}
+.desert-head{position:absolute;left:31px;top:0;width:52px;height:59px;border-radius:48%;overflow:hidden;border:1px solid #70442c;z-index:6}
+.desert-face{position:absolute;inset:-6px;background:url("aurora_face.jpg") center 34%/148% auto no-repeat;filter:brightness(.9)}
+.desert-hair{position:absolute;left:-6px;right:-5px;top:-7px;height:28px;border-radius:60%;background:#21140d;opacity:.82}
+.desert-torso{position:absolute;left:28px;top:58px;width:51px;height:66px;border-radius:13px;background:linear-gradient(90deg,#4b4937,#75664b,#373329)}
+.desert-pack{position:absolute;left:12px;top:70px;width:29px;height:50px;border-radius:9px;background:#29251d;border:2px solid #5b4931}
+.desert-arm{position:absolute;top:67px;width:14px;height:61px;border-radius:8px;background:#9f6545;transform-origin:50% 7px}
+.arm-l{left:20px}.arm-r{left:76px}
+.desert-leg{position:absolute;top:121px;width:17px;height:53px;border-radius:7px;background:#33322c;transform-origin:50% 4px}
+.leg-l{left:34px}.leg-r{left:59px}
+.desert-aurora.walk .leg-l{animation:leg .34s infinite alternate}
+.desert-aurora.walk .leg-r{animation:leg .34s -.34s infinite alternate}
+.desert-aurora.walk .arm-l{animation:arm .34s infinite alternate}
+.desert-aurora.walk .arm-r{animation:arm .34s -.34s infinite alternate}
+
+.desert-hud{
+  position:absolute;z-index:90;top:calc(.6rem + env(safe-area-inset-top));left:.7rem;right:.7rem;
+  display:flex;justify-content:space-between;padding:.75rem 1rem;border:1px solid #a77b3d;border-radius:14px;background:rgba(0,0,0,.66);
+}
+.desert-hud b{display:block;color:#efc16b}.desert-hud small{color:#e1cda8}.desert-hud>div:last-child{text-align:right}
+.desert-dialog{
+  position:absolute;z-index:90;top:16%;left:5%;right:5%;display:flex;gap:10px;align-items:center;
+  padding:.7rem;border:1px solid #a77b3d;border-radius:14px;background:rgba(0,0,0,.72);
+}
+.desert-dialog .dialog-face{width:52px;height:52px;flex:none}
+.desert-dialog b{font-size:.72rem;color:#dcae54}.desert-dialog p{margin:.15rem 0 0;color:#f0dab0;font-size:.83rem}
+.desert-controls{
+  position:absolute;z-index:100;left:0;right:0;bottom:calc(.7rem + env(safe-area-inset-bottom));
+  display:flex;justify-content:center;gap:10px;
+}
+.desert-controls button{
+  min-width:70px;height:56px;border:1px solid #c39246;border-radius:15px;background:rgba(14,10,7,.88);font-weight:900;
+}
+#desertInspect{background:#4a6e2b}
+.chapter-complete{
+  position:absolute;z-index:140;left:8%;right:8%;top:36%;padding:20px;text-align:center;
+  border:2px solid #d6aa51;border-radius:18px;background:rgba(0,0,0,.82);
+  box-shadow:0 0 35px rgba(237,184,70,.38);animation:chapterIn 1s ease;
+}
+.chapter-complete h2{margin:0;color:#efc367;font:900 1.6rem Georgia,serif}
+.chapter-complete p{color:#fff0c5}.chapter-complete small{color:#d6c09a}
+@keyframes chapterIn{from{opacity:0;transform:translateY(20px) scale(.95)}to{opacity:1;transform:none}}
