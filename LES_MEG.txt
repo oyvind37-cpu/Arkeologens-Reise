@@ -1,18 +1,18 @@
-ARKEOLOGENS REISE 4.2
+ARKEOLOGENS REISE 4.3
 
-Last opp og erstatt disse filene i GitHub-repositoryets rot:
-index.html
-style.css
-game.js
-intro.png
-temple.jpg
-aurora_face.jpg
+Erstatt disse filene i GitHub:
+- index.html
+- style.css
+- game.js
+- intro.png
+- temple.jpg
+- aurora_face.jpg
 
-Dette er fortsatt en 2.5D HTML-prototype, ikke ekte Godot/Unity-3D.
-Nytt:
-- Aurora med ansiktsreferanse, blinking og kroppsbevegelser
-- arkeologblikk
-- filmatisk tempelmiljø
-- støv, tåke, fakler og lys
-- trykkplate og pilfelle
-- skjult dør og WOW-lys
+Nytt i 4.3:
+- Horus-øyet har egen interaksjonssone.
+- UNDERSØK-knappen lyser når Aurora står riktig.
+- Teksthint vises ved veggen.
+- Horus-veggen beveger seg.
+- Støv faller når mekanismen aktiveres.
+- Gravkammerdøren åpnes etterpå.
+- Hoppet er høyere og mykere.

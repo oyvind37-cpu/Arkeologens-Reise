@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
 <meta name="theme-color" content="#0b0704">
-<title>Arkeologens Reise 4.2</title>
+<title>Arkeologens Reise 4.3</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -22,8 +22,16 @@
       <div class="ground"></div>
       <div class="pillar p1"></div><div class="pillar p2"></div><div class="pillar p3"></div>
       <div class="torch t1"><i></i></div><div class="torch t2"><i></i></div>
+
       <div id="pressurePlate" class="plate"></div>
       <div id="arrows" class="arrows"><i></i><i></i><i></i></div>
+
+      <div id="eyeWall" class="eye-wall">
+        <div id="eyeGlow" class="eye-glow"></div>
+        <span class="eye-symbol">𓂀</span>
+        <div id="wallDust" class="wall-dust"></div>
+      </div>
+
       <div id="door" class="door"><span>𓂀</span></div>
       <div id="wowLight" class="wow-light"></div>
 
@@ -42,6 +50,8 @@
 
     <div class="hud"><div><b>EGYPT</b><small>Kongenes dal</small></div><div><b id="objective">Finn inngangen</b><small id="progress">1 / 4</small></div></div>
     <div id="dialog" class="dialog"><div class="dialog-face"></div><div><b>AURORA</b><p id="dialogText">Vi tar det rolig. Gå mot høyre og se etter noe uvanlig.</p></div></div>
+
+    <div id="nearHint" class="near-hint hidden">UNDERSØK HORUS-ØYET</div>
 
     <div class="controls">
       <div><button id="left">◀</button><button id="right">▶</button></div>
