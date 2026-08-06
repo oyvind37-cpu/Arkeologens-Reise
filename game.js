@@ -89,14 +89,7 @@ function updateMusicButtons(){
 
 function toggleMusic(){
   musicWanted=!musicWanted;
-  
-updateMusicButtons();
-
-const resetGameBtn=$("resetGameBtn");
-resetGameBtn.onclick=()=>{
-  localStorage.removeItem("aurora_compass");
-  location.reload();
-};
+  updateMusicButtons();
 
   if(musicWanted){
     musicTrack.play().catch(()=>resumeFallback());
@@ -109,12 +102,31 @@ musicIntroBtn.onclick=toggleMusic;
 musicGameBtn.onclick=toggleMusic;
 updateMusicButtons();
 
-$("startBtn").onclick=async()=>{
-  await startMusic();
+const resetGameBtn=$("resetGameBtn");
+resetGameBtn.onclick=()=>{
+  localStorage.removeItem("aurora_compass");
+  location.reload();
+};
+
+const startBtn=$("startBtn");
+let gameStarted=false;
+
+function launchGame(){
+  if(gameStarted)return;
+  gameStarted=true;
+
+  // Open the game immediately. Audio must never block navigation.
   show($("game"));
   say("Vi tar det rolig. Gå mot høyre og se etter noe uvanlig.");
   requestAnimationFrame(loop);
-};
+
+  startMusic().catch(error=>{
+    console.log("Musikken kunne ikke starte, men spillet fortsetter.",error);
+  });
+}
+
+startBtn.addEventListener("click",launchGame);
+startBtn.addEventListener("pointerup",launchGame);
 
 function hold(id,key){
  const b=$(id);

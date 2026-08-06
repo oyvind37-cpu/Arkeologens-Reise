@@ -1,6 +1,6 @@
 {
   "name": "Arkeologens Reise",
-  "version": "5.1.1",
+  "version": "5.1.2",
   "entry": "index.html",
   "platform": "HTML5 / GitHub Pages",
   "files": [
@@ -12,5 +12,5 @@
     "temple.jpg",
     "mystisk_musikk.mp3"
   ],
-  "notes": "Hotfix: repaired invalid HTML structure and JavaScript startup syntax error."
+  "notes": "Start button stability fix. Game opens before audio starts. Cache-busting and fallback navigation added."
 }

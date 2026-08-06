@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
 <meta name="theme-color" content="#0b0704">
-<title>Arkeologens Reise 5.1.1</title>
+<title>Arkeologens Reise 5.1.2</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -25,7 +25,7 @@
 
   <audio id="musicTrack" src="mystisk_musikk.mp3" preload="auto" loop></audio>
 
-  <section id="game" class="screen"><div class="build-marker">v5.1.1</div>
+  <section id="game" class="screen"><div class="build-marker">v5.1.2</div>
     <div id="world">
       <div class="temple-bg"></div><div class="sunbeam"></div><div class="mist"></div>
       <div class="ground"></div>
@@ -240,6 +240,22 @@
   </section>
 
 </main>
-<script src="game.js"></script>
+<script src="game.js?v=5.1.2"></script>
+<script>
+(function(){
+  const start=document.getElementById("startBtn");
+  const intro=document.getElementById("intro");
+  const game=document.getElementById("game");
+  if(!start||!intro||!game)return;
+  start.addEventListener("click",function(){
+    setTimeout(function(){
+      if(intro.classList.contains("active")){
+        intro.classList.remove("active");
+        game.classList.add("active");
+      }
+    },120);
+  });
+})();
+</script>
 </body>
 </html>
