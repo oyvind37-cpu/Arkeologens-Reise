@@ -3,41 +3,52 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-<title>Arkeologens Reise 4.1</title>
+<meta name="theme-color" content="#0b0704">
+<title>Arkeologens Reise 4.2</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<canvas id="game"></canvas>
+<main id="app">
+  <section id="intro" class="screen active">
+    <div class="intro-bg"></div><div class="shade"></div><div class="dust"></div>
+    <div class="title"><h1>ARKEOLOGENS REISE</h1><p>Professor Aurora Vale og det tapte kompasset</p></div>
+    <div class="aurora-intro"><div class="portrait"></div><p>«Historien belønner tålmodighet. Se én gang til.»</p></div>
+    <button id="startBtn">START REISEN</button>
+  </section>
 
-<section id="intro" class="active">
-  <div class="copy">
-    <h1>ARKEOLOGENS REISE</h1>
-    <p>Professor Aurora Vale og det tapte kompasset</p>
-    <button id="start">START REISEN</button>
-  </div>
-</section>
+  <section id="game" class="screen">
+    <div id="world">
+      <div class="temple-bg"></div><div class="sunbeam"></div><div class="mist"></div>
+      <div class="ground"></div>
+      <div class="pillar p1"></div><div class="pillar p2"></div><div class="pillar p3"></div>
+      <div class="torch t1"><i></i></div><div class="torch t2"><i></i></div>
+      <div id="pressurePlate" class="plate"></div>
+      <div id="arrows" class="arrows"><i></i><i></i><i></i></div>
+      <div id="door" class="door"><span>𓂀</span></div>
+      <div id="wowLight" class="wow-light"></div>
 
-<section id="hud" class="hidden">
-  <span id="objective">Finn inngangen</span>
-  <span id="progress">1 / 4</span>
-</section>
+      <div id="aurora" class="aurora">
+        <div class="shadow"></div>
+        <div class="body">
+          <div class="head"><div class="face"></div><div class="hair"></div><div class="blink"></div></div>
+          <div class="neck"></div><div class="torso"></div><div class="scarf"></div><div class="backpack"></div>
+          <div class="arm left-arm"></div><div class="arm right-arm"></div>
+          <div class="leg left-leg"></div><div class="leg right-leg"></div>
+          <div class="boot left-boot"></div><div class="boot right-boot"></div>
+          <div class="hand-note">📓</div>
+        </div>
+      </div>
+    </div>
 
-<section id="dialog" class="hidden">
-  <b>AURORA</b>
-  <p id="dialogText"></p>
-</section>
+    <div class="hud"><div><b>EGYPT</b><small>Kongenes dal</small></div><div><b id="objective">Finn inngangen</b><small id="progress">1 / 4</small></div></div>
+    <div id="dialog" class="dialog"><div class="dialog-face"></div><div><b>AURORA</b><p id="dialogText">Vi tar det rolig. Gå mot høyre og se etter noe uvanlig.</p></div></div>
 
-<section id="controls" class="hidden">
-  <div>
-    <button id="left">◀</button>
-    <button id="right">▶</button>
-  </div>
-  <div>
-    <button id="jump">HOPP</button>
-    <button id="interact" class="primary">UNDERSØK</button>
-  </div>
-</section>
-
+    <div class="controls">
+      <div><button id="left">◀</button><button id="right">▶</button></div>
+      <div><button id="vision">BLIKK</button><button id="jump">HOPP</button><button id="interact" class="primary">UNDERSØK</button></div>
+    </div>
+  </section>
+</main>
 <script src="game.js"></script>
 </body>
 </html>
