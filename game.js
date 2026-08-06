@@ -4,7 +4,7 @@ const screens=[...document.querySelectorAll(".screen")];
 const world=$("world"),aurora=$("aurora"),dialogText=$("dialogText");
 const plate=$("pressurePlate"),arrows=$("arrows"),eyeWall=$("eyeWall"),eyeGlow=$("eyeGlow"),wallDust=$("wallDust");
 const door=$("door"),wow=$("wowLight"),nearHint=$("nearHint"),interact=$("interact"),enterChamberBtn=$("enterChamberBtn");
-const state={x:180,left:false,right:false,jumping:false,stage:0,vision:false,camera:0,idle:0,last:0,nearEye:false,eyeOpened:false};
+const state={x:180,left:false,right:false,jumping:false,stage:0,vision:false,camera:0,idle:0,last:0,nearEye:false,eyeOpened:false,floorHintShown:false};
 
 function show(s){screens.forEach(x=>x.classList.remove("active"));s.classList.add("active")}
 function say(t){dialogText.textContent=t;state.idle=performance.now()}
@@ -89,7 +89,15 @@ function updateMusicButtons(){
 
 function toggleMusic(){
   musicWanted=!musicWanted;
-  updateMusicButtons();
+  
+updateMusicButtons();
+
+const resetGameBtn=$("resetGameBtn");
+resetGameBtn.onclick=()=>{
+  localStorage.removeItem("aurora_compass");
+  location.reload();
+};
+
   if(musicWanted){
     musicTrack.play().catch(()=>resumeFallback());
   }else{
@@ -140,19 +148,29 @@ $("interact").onclick=()=>{
  setTimeout(()=>aurora.classList.remove("observe"),1700);
 
  if(state.stage===0){
-   if(state.x<600){say("Jeg ville gått litt lenger frem først.");return}
-   state.stage=1;objective("Undersøk trykkplaten",2);
-   say("Vent. Det er en trykkplate. La oss forstå mekanismen før vi trår på den.");
+   if(state.x<560){
+     say("Jeg må gå nærmere den slitte steinen.");
+     return;
+   }
+   state.stage=1;
+   objective("Undersøk gulvet",2);
+   plate.classList.add("glow");
+   say("Her er noe risset inn i gulvet. Den midterste steinen er tydelig mer slitt.");
    return;
  }
 
  if(state.stage===1){
-   if(state.x<650||state.x>860){say("Jeg må stå nærmere den slitte steinen.");return}
+   if(state.x<640||state.x>880){
+     say("Jeg må stå helt ved den slitte steinen før jeg undersøker.");
+     return;
+   }
+   plate.classList.remove("glow");
    arrows.classList.add("show");
    setTimeout(()=>arrows.classList.remove("show"),1200);
-   state.stage=2;objective("Finn Horus-øyet",3);
-   plate.classList.remove("glow");
-   say("Piler i veggen. Historien tester virkelig tålmodigheten vår.");
+   state.stage=2;
+   objective("Finn Horus-øyet",3);
+   eyeWall.classList.add("ready");
+   say("Piler i veggen... men mekanismen fortsetter videre. Se etter Horus-øyet.");
    return;
  }
 
@@ -165,11 +183,13 @@ $("interact").onclick=()=>{
    eyeWall.classList.add("ready");
    wallDust.classList.add("active");
    say("Fantastisk... mekanismen virker fortsatt etter over tre tusen år.");
+
    setTimeout(()=>{
      eyeWall.classList.add("open");
      nearHint.classList.add("hidden");
      interact.classList.remove("ready");
    },450);
+
    setTimeout(()=>{
      door.classList.add("open");
      wow.classList.add("show");
@@ -180,13 +200,17 @@ $("interact").onclick=()=>{
    },1500);
    return;
  }
+
+ if(state.stage===3){
+   say("Inngangen er åpen. Trykk GÅ INN I SKATTEKAMMERET.");
+ }
 };
 
 function updateNearEye(){
  state.nearEye=state.stage===2 && !state.eyeOpened && state.x>=1210 && state.x<=1510;
  nearHint.classList.toggle("hidden",!state.nearEye);
  interact.classList.toggle("ready",state.nearEye);
- eyeWall.classList.toggle("ready",state.nearEye || (state.vision && state.stage===2 && !state.eyeOpened));
+ eyeWall.classList.toggle("ready",state.stage===2 && !state.eyeOpened);
 }
 
 function loop(t){
@@ -212,10 +236,13 @@ function loop(t){
  state.camera+=(desired-state.camera)*.10;
  world.style.transform=`translateX(${-state.camera}px)`;
 
- if(state.stage===0&&state.x>600){
+ if(state.stage===0&&state.x>560){
    objective("Undersøk gulvet",2);
-   say("Ser du forskjellen i steinene? Prøv BLIKK eller UNDERSØK.");
-   state.stage=1;
+   plate.classList.add("glow");
+   if(!state.floorHintShown){
+     state.floorHintShown=true;
+     say("Ser du forskjellen i steinene? Stå ved den slitte steinen og trykk UNDERSØK.");
+   }
  }
 
  if(performance.now()-state.idle>9000){

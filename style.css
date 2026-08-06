@@ -488,3 +488,18 @@ button{font:inherit;color:inherit;border:0}.screen{display:none;position:absolut
 .chapter-complete h2{margin:0;color:#efc367;font:900 1.6rem Georgia,serif}
 .chapter-complete p{color:#fff0c5}.chapter-complete small{color:#d6c09a}
 @keyframes chapterIn{from{opacity:0;transform:translateY(20px) scale(.95)}to{opacity:1;transform:none}}
+
+.build-marker{
+ position:absolute;z-index:200;right:.4rem;bottom:calc(4.3rem + env(safe-area-inset-bottom));
+ padding:.15rem .35rem;border-radius:6px;background:rgba(0,0,0,.45);
+ color:rgba(255,255,255,.5);font-size:.62rem;pointer-events:none;
+}
+
+.reset-game{
+ position:absolute;z-index:95;
+ top:calc(5.8rem + env(safe-area-inset-top));
+ right:3.9rem;width:45px;height:45px;
+ border:1px solid #b88b42;border-radius:50%;
+ background:rgba(0,0,0,.75);color:#f0c46d;
+ font-size:1.15rem;font-weight:900;
+}
