@@ -106,154 +106,191 @@ button{font:inherit;color:inherit;border:0}.screen{display:none;position:absolut
   bottom:calc(5% + env(safe-area-inset-bottom));
 }
 
-/* 4.5: korrekt tittel og WOW-skattekammer */
+/* 4.6: korrekt tittel */
 .correct-title{
-  position:absolute;
-  z-index:18;
-  top:7.5%;
-  left:9%;
-  right:9%;
-  padding:12px 10px 10px;
-  text-align:center;
-  background:linear-gradient(90deg,transparent,rgba(0,0,0,.76) 16%,rgba(0,0,0,.82) 84%,transparent);
+  position:absolute;z-index:18;top:7%;left:7%;right:7%;
+  padding:12px 8px;text-align:center;
+  background:linear-gradient(90deg,transparent,rgba(0,0,0,.82) 18%,rgba(0,0,0,.82) 82%,transparent);
   text-shadow:0 4px 18px #000;
 }
-.correct-title h1{
-  margin:0;
-  color:#d9a84d;
-  font:900 clamp(2rem,8.2vw,4.2rem) Georgia,serif;
-  letter-spacing:.02em;
+.correct-title h1{margin:0;color:#d9a84d;font:900 clamp(2rem,8.2vw,4.2rem) Georgia,serif}
+.correct-title p{margin:.3rem 0 0;color:#f0d7aa}
+.enter-chamber{
+  position:absolute;z-index:110;left:50%;bottom:23%;
+  transform:translateX(-50%);
+  min-width:250px;height:52px;padding:0 1rem;
+  border:2px solid #e0b058;border-radius:14px;
+  background:linear-gradient(#6c873d,#3d5925);
+  color:#fff;font-weight:900;box-shadow:0 0 26px rgba(235,183,78,.45);
+  animation:pulse 1.3s infinite;
 }
-.correct-title p{
-  margin:.35rem 0 0;
-  color:#f0d7aa;
-  font-size:.95rem;
+
+/* Gravkammer */
+.chamber-screen{background:#090604}
+.chamber-ceiling{
+  position:absolute;left:0;right:0;top:0;height:20%;
+  background:linear-gradient(#171009,#291b0f);
+  border-bottom:5px solid #5f4327;
 }
-.treasure-chamber{
-  position:absolute;
-  left:1910px;
-  bottom:29%;
-  width:460px;
-  height:430px;
-  overflow:hidden;
-  border:12px solid #705235;
+.chamber-wall{
+  position:absolute;left:0;right:0;top:15%;bottom:24%;
   background:
-    radial-gradient(circle at 50% 78%,rgba(255,205,95,.22),transparent 48%),
-    linear-gradient(#1a120a,#090604);
-  box-shadow:inset 0 0 70px #000,0 0 40px rgba(220,165,70,.18);
+    linear-gradient(rgba(52,34,18,.18),rgba(8,5,3,.46)),
+    repeating-linear-gradient(0deg,#49321e 0 46px,#362416 46px 50px);
+  box-shadow:inset 0 0 90px #000;
 }
-.chamber-backwall{
-  position:absolute;
-  inset:0;
+.glyph-band{
+  position:absolute;left:8%;right:8%;top:11%;
+  color:#b88a49;font-size:clamp(1.5rem,4vw,2.6rem);
+  letter-spacing:.25rem;text-align:center;opacity:.68;
+  text-shadow:0 0 10px rgba(241,188,77,.22);
+}
+.glyph-two{top:35%;color:#8f6a3d;transform:scale(.92)}
+.mural{
+  position:absolute;left:12%;right:12%;bottom:10%;
+  color:#a4783f;font-size:clamp(2rem,6vw,4.4rem);
+  text-align:center;opacity:.58;
+}
+.chamber-floor{
+  position:absolute;left:0;right:0;bottom:0;height:27%;
   background:
-    linear-gradient(rgba(77,52,29,.25),rgba(26,16,8,.5)),
-    repeating-linear-gradient(0deg,#3a2818 0 36px,#2c1e13 36px 39px);
+    radial-gradient(circle at 50% 0,rgba(242,190,82,.24),transparent 52%),
+    repeating-linear-gradient(90deg,#66451f 0 64px,#4a3015 64px 70px);
+  border-top:4px solid #92703e;
 }
-.hieroglyphs{
-  position:absolute;
-  top:48px;
-  left:24px;
-  right:24px;
-  color:#b88c4d;
-  font-size:2rem;
-  line-height:1.55;
-  letter-spacing:.25rem;
-  opacity:.62;
-  text-align:center;
-  text-shadow:0 0 8px rgba(239,189,91,.22);
+.chamber-column{
+  position:absolute;top:7%;bottom:21%;width:14%;
+  max-width:105px;
+  background:linear-gradient(90deg,#26180d,#6d4c2d 48%,#24170c);
+  border-left:5px solid #8f6840;border-right:5px solid #3e2817;
+  box-shadow:0 0 24px #000;z-index:5;
 }
-.hieroglyphs.second{top:150px;color:#8f6e43;transform:scale(.92)}
-.chamber-columns{
-  position:absolute;
-  top:0;
-  width:72px;
-  height:100%;
-  background:linear-gradient(90deg,#281b10,#705135 46%,#24170d);
-  border-left:4px solid #8b6844;
-  border-right:4px solid #4b321e;
-  box-shadow:0 0 18px #000;
-  z-index:4;
+.column-left{left:2%}.column-right{right:2%}
+.anubis{
+  position:absolute;bottom:25%;z-index:7;
+  color:#16110d;font-size:clamp(5rem,16vw,10rem);
+  text-shadow:0 0 5px #b88842,0 10px 20px #000;
 }
-.left-col{left:0}.right-col{right:0}
-.gold-floor{
-  position:absolute;
-  left:0;right:0;bottom:0;height:92px;
-  background:
-    radial-gradient(circle at 50% 0,rgba(255,221,128,.24),transparent 52%),
-    repeating-linear-gradient(90deg,#6b4a22 0 54px,#513617 54px 58px);
-  border-top:3px solid #9a6e2d;
+.anubis-left{left:14%}.anubis-right{right:14%;transform:scaleX(-1)}
+.light-shaft{
+  position:absolute;left:25%;right:25%;top:-8%;height:82%;
+  background:conic-gradient(from 176deg at 50% 0,transparent 0 17%,rgba(255,220,139,.38) 19%,transparent 24%);
+  filter:blur(10px);animation:rays 4s ease-in-out infinite alternate;
 }
-.chamber-rays{
-  position:absolute;
-  left:95px;right:95px;top:-40px;height:360px;
-  background:conic-gradient(from 177deg at 50% 0,transparent 0 16%,rgba(255,219,133,.32) 18%,transparent 23%);
-  filter:blur(8px);
-  animation:rays 4s ease-in-out infinite alternate;
-}
-.gold-dust:before,.gold-dust:after{
-  content:"";
-  position:absolute;
-  width:4px;height:4px;border-radius:50%;
-  background:#ffd86e;
-  box-shadow:40px 80px #eab84d,110px 55px #ffd86e,180px 125px #eab84d,245px 70px #ffd86e,310px 145px #eab84d,360px 95px #ffd86e;
+.floating-gold:before,.floating-gold:after{
+  content:"";position:absolute;width:4px;height:4px;border-radius:50%;background:#ffd66b;
+  box-shadow:12vw 45vh #e8b545,25vw 35vh #ffd66b,42vw 50vh #e8b545,60vw 30vh #ffd66b,78vw 48vh #e8b545;
   animation:goldDust 5s linear infinite;
 }
-.gold-dust:after{animation-delay:-2.5s;left:20px;top:30px}
-.pedestal{
-  position:absolute;
-  left:154px;
-  bottom:62px;
-  width:150px;
-  height:38px;
-  background:linear-gradient(#7a5526,#3d2711);
-  border:4px solid #aa7932;
-  border-radius:10px 10px 2px 2px;
-  z-index:5;
+.floating-gold:after{animation-delay:-2.4s;left:5%;top:10%}
+.sarcophagus{
+  position:absolute;left:50%;bottom:25%;width:155px;height:245px;
+  transform:translateX(-50%);
+  border-radius:70px 70px 22px 22px;
+  border:8px solid #c99932;
+  background:linear-gradient(90deg,#6b4517,#c9962d 48%,#664015);
+  box-shadow:0 0 32px rgba(235,183,71,.3),inset 0 0 25px #3d260d;
+  z-index:9;transition:1s;
 }
-.gold-chest{
-  position:absolute;
-  left:164px;
-  bottom:92px;
-  width:130px;
-  height:88px;
-  z-index:8;
-  filter:drop-shadow(0 0 18px rgba(255,199,75,.6));
-  animation:chestGlow 1.7s ease-in-out infinite alternate;
+.sarcophagus.open{transform:translateX(-50%) rotate(-8deg) translateY(-15px);opacity:.45}
+.sarcophagus-face{margin-top:36px;text-align:center;color:#3f280e;font-size:5rem}
+.symbol-puzzle{
+  position:absolute;left:50%;top:25%;transform:translateX(-50%);
+  width:min(330px,76%);padding:12px;border:2px solid #9d7338;border-radius:14px;
+  background:rgba(17,10,5,.88);z-index:30;text-align:center;
 }
-.chest-lid{
-  position:absolute;
-  left:0;right:0;top:0;height:42px;
-  border-radius:18px 18px 5px 5px;
-  background:linear-gradient(#d5a72e,#7f5914);
-  border:4px solid #f0c555;
-  display:flex;align-items:center;justify-content:center;
+.symbol-puzzle h3{margin:0;color:#e5b65b;font:800 1rem Georgia,serif}
+.symbol-puzzle p{margin:.25rem 0 .6rem;color:#d8c29a;font-size:.78rem}
+.symbol-puzzle button{
+  width:58px;height:50px;margin:3px;border:1px solid #c69848;border-radius:12px;
+  background:#25170c;font-size:1.65rem;
 }
-.chest-lid span{font-size:2rem;color:#4b2e0d}
-.chest-body{
-  position:absolute;
-  left:5px;right:5px;bottom:0;height:50px;
-  background:linear-gradient(90deg,#775013,#d3a12b 45%,#704810);
-  border:4px solid #e8bd50;
-  border-top:0;
+.symbol-puzzle button.selected{background:#765625;box-shadow:0 0 15px #e6b657}
+.symbol-puzzle.solved{opacity:.35;pointer-events:none}
+.treasure-chest{
+  position:absolute;left:50%;bottom:25%;width:145px;height:96px;
+  transform:translateX(-50%) translateY(80px) scale(.7);
+  opacity:0;z-index:22;transition:1s;
 }
-.wow-caption{
-  position:absolute;
-  z-index:120;
-  top:44%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  padding:.8rem 1.2rem;
-  border:1px solid #d9a64f;
-  border-radius:12px;
-  background:rgba(0,0,0,.78);
-  color:#f3c96e;
-  font:900 1rem Georgia,serif;
-  letter-spacing:.08em;
-  text-align:center;
-  box-shadow:0 0 30px rgba(240,190,80,.28);
-  animation:captionIn 2.8s ease forwards;
+.treasure-chest.revealed{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}
+.treasure-glow{
+  position:absolute;left:-60px;top:-55px;width:265px;height:190px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,213,93,.7),transparent 65%);
+  animation:pulse 1.2s infinite;
 }
-@keyframes rays{to{opacity:.72;transform:scaleX(1.07)}}
-@keyframes goldDust{from{transform:translateY(120px);opacity:0}30%{opacity:1}to{transform:translateY(-70px);opacity:0}}
-@keyframes chestGlow{to{filter:drop-shadow(0 0 30px rgba(255,207,84,.92));transform:translateY(-3px)}}
-@keyframes captionIn{0%{opacity:0;transform:translate(-50%,-30%)}20%,75%{opacity:1;transform:translate(-50%,-50%)}100%{opacity:0;transform:translate(-50%,-62%)}}
+.treasure-lid{
+  position:absolute;left:0;right:0;top:0;height:45px;border-radius:24px 24px 6px 6px;
+  border:4px solid #efc35a;background:linear-gradient(#d7a532,#7b5112);
+  display:flex;align-items:center;justify-content:center;transform-origin:0 100%;transition:.8s;
+}
+.treasure-lid span{font-size:2rem;color:#42280c}
+.treasure-box{
+  position:absolute;left:5px;right:5px;bottom:0;height:55px;
+  border:4px solid #e8ba4d;background:linear-gradient(90deg,#68420f,#d19d27,#65400f);
+}
+.treasure-chest.open .treasure-lid{transform:rotate(-38deg) translate(-4px,-7px)}
+.compass-artifact{
+  position:absolute;left:50%;bottom:42%;transform:translateX(-50%);
+  font-size:4.2rem;opacity:0;z-index:40;filter:drop-shadow(0 0 25px #ffd35b);
+}
+.compass-artifact.show{animation:artifactRise 1.6s forwards}
+.chamber-aurora{
+  position:absolute;left:7%;bottom:24%;width:94px;height:160px;z-index:28;
+  transition:left .05s linear;transform-origin:50% 100%;
+}
+.chamber-aurora.walk{animation:bob .34s infinite alternate}
+.chamber-aurora.face-left .chamber-body{transform:scaleX(-1)}
+.chamber-shadow{position:absolute;left:8px;bottom:-4px;width:76px;height:16px;border-radius:50%;background:rgba(0,0,0,.52)}
+.chamber-body{position:absolute;inset:0;transform-origin:center}
+.chamber-head{position:absolute;left:29px;top:0;width:48px;height:55px;border-radius:48%;overflow:hidden;border:1px solid #70442c;z-index:6}
+.chamber-face{position:absolute;inset:-5px;background:url("aurora_face.jpg") center 34%/148% auto no-repeat;filter:brightness(.82)}
+.chamber-hair{position:absolute;left:-6px;right:-5px;top:-7px;height:27px;border-radius:60%;background:#21140d;opacity:.82}
+.chamber-torso{position:absolute;left:27px;top:54px;width:48px;height:59px;border-radius:13px;background:linear-gradient(90deg,#454333,#75654b,#353229)}
+.chamber-arm{position:absolute;top:61px;width:13px;height:55px;border-radius:8px;background:#9f6545;transform-origin:50% 7px}
+.arm-a{left:20px}.arm-b{left:73px}
+.chamber-leg{position:absolute;top:109px;width:16px;height:47px;border-radius:7px;background:#33322c;transform-origin:50% 4px}
+.leg-a{left:33px}.leg-b{left:56px}
+.chamber-aurora.walk .leg-a{animation:leg .34s infinite alternate}
+.chamber-aurora.walk .leg-b{animation:leg .34s -.34s infinite alternate}
+.chamber-hud{
+  position:absolute;z-index:90;top:calc(.6rem + env(safe-area-inset-top));left:.7rem;right:.7rem;
+  display:flex;justify-content:space-between;padding:.75rem 1rem;border:1px solid #b38845;border-radius:14px;background:rgba(0,0,0,.74);
+}
+.chamber-hud b{display:block;color:#edbf63}.chamber-hud small{color:#dac59d}.chamber-hud>div:last-child{text-align:right}
+.chamber-dialog{
+  position:absolute;z-index:90;top:16%;left:5%;right:5%;display:flex;gap:10px;align-items:center;
+  padding:.7rem;border:1px solid #b38845;border-radius:14px;background:rgba(0,0,0,.77);
+}
+.chamber-dialog .dialog-face{width:52px;height:52px;flex:none}
+.chamber-dialog b{font-size:.72rem;color:#dcae54}.chamber-dialog p{margin:.15rem 0 0;color:#f0dab0;font-size:.83rem}
+.chamber-controls{
+  position:absolute;z-index:100;left:0;right:0;bottom:calc(.7rem + env(safe-area-inset-bottom));
+  display:flex;justify-content:center;gap:10px;
+}
+.chamber-controls button{
+  min-width:70px;height:56px;border:1px solid #c39246;border-radius:15px;background:rgba(14,10,7,.9);font-weight:900;
+}
+#chamberInspect{background:#4a6e2b}
+.journal-screen{background:#21160d}
+.journal-book{
+  position:absolute;inset:3%;padding:12px;border-radius:20px;background:linear-gradient(90deg,#5f4325,#9b7545 3%,#ead7aa 5%,#e6d0a1 95%,#8d6639 97%,#4a321c);
+  box-shadow:0 0 45px #000;
+}
+.journal-page{
+  height:100%;padding:18px 20px;border:1px solid #a98759;background:
+  repeating-linear-gradient(0deg,rgba(115,88,50,.08) 0 1px,transparent 1px 27px),
+  #ead8ad;color:#3d2b1a;overflow:auto;
+}
+.journal-page header{display:flex;justify-content:space-between;border-bottom:2px solid #8a6942;padding-bottom:8px}
+.journal-page header span{font:900 1.3rem Georgia,serif}.journal-page header small{font-size:.72rem}
+.journal-sketch{position:relative;height:180px;margin:14px 0;border:1px solid #9e7b50;background:rgba(255,255,255,.18);overflow:hidden}
+.sketch-compass{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:6rem;filter:grayscale(1) sepia(.5);animation:sketchIn 2s ease forwards}
+.sketch-lines:before,.sketch-lines:after{content:"";position:absolute;inset:18px;border:2px solid rgba(72,49,28,.35);border-radius:50%;transform:rotate(-8deg)}
+.sketch-lines:after{inset:34px;transform:rotate(12deg)}
+.journal-page h2{font:900 1.4rem Georgia,serif;margin:.4rem 0}.journal-meta{font-size:.82rem}
+.journal-page blockquote{margin:14px 0;padding:12px;border-left:4px solid #89663d;background:rgba(255,255,255,.18);font:italic .95rem Georgia,serif;line-height:1.45}
+.journal-page button{width:100%;height:50px;border-radius:12px;background:#4b672d;color:#fff;font-weight:900}
+@keyframes rays{to{opacity:.7;transform:scaleX(1.08)}}
+@keyframes goldDust{from{transform:translateY(120px);opacity:0}30%{opacity:1}to{transform:translateY(-80px);opacity:0}}
+@keyframes artifactRise{0%{opacity:0;transform:translate(-50%,40px) scale(.4)}60%{opacity:1;transform:translate(-50%,-55px) scale(1.25)}100%{opacity:1;transform:translate(-50%,-30px) scale(1)}}
+@keyframes sketchIn{from{opacity:0;filter:grayscale(1) sepia(.5) blur(5px);transform:translate(-50%,-50%) scale(.55)}to{opacity:1;filter:grayscale(1) sepia(.5);transform:translate(-50%,-50%) scale(1)}}

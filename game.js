@@ -3,7 +3,7 @@ const $=id=>document.getElementById(id);
 const screens=[...document.querySelectorAll(".screen")];
 const world=$("world"),aurora=$("aurora"),dialogText=$("dialogText");
 const plate=$("pressurePlate"),arrows=$("arrows"),eyeWall=$("eyeWall"),eyeGlow=$("eyeGlow"),wallDust=$("wallDust");
-const door=$("door"),wow=$("wowLight"),nearHint=$("nearHint"),interact=$("interact"),wowCaption=$("wowCaption");
+const door=$("door"),wow=$("wowLight"),nearHint=$("nearHint"),interact=$("interact"),enterChamberBtn=$("enterChamberBtn");
 const state={x:180,left:false,right:false,jumping:false,stage:0,vision:false,camera:0,idle:0,last:0,nearEye:false,eyeOpened:false};
 
 function show(s){screens.forEach(x=>x.classList.remove("active"));s.classList.add("active")}
@@ -175,18 +175,9 @@ $("interact").onclick=()=>{
      wow.classList.add("show");
      state.stage=3;
      objective("Gå inn i gravkammeret",4);
-     say("Der åpnet den seg... Sollys har ikke nådd dette rommet på tusenvis av år.");
+     enterChamberBtn.classList.remove("hidden");
+     say("Der åpnet den seg... Et større kammer ligger bak veggen.");
    },1500);
-   return;
- }
-
- if(state.stage===4){
-   if(state.x<1990){
-     say("Jeg må gå nærmere gullkisten.");
-     return;
-   }
-   say("Sfinksen på lokket... dette er ikke bare en skatt. Det er en beskjed.");
-   objective("Funn registrert i feltdagboken",4);
    return;
  }
 };
@@ -217,14 +208,6 @@ function loop(t){
 
  updateNearEye();
 
- if(state.stage===3 && state.x>1880){
-   state.stage=4;
-   objective("Undersøk gullkisten",4);
-   wowCaption.classList.remove("hidden");
-   setTimeout(()=>wowCaption.classList.add("hidden"),2800);
-   say("Utrolig... veggene er dekket av hieroglyfer. Og den kisten... en sfinks vokter lokket.");
- }
-
  const desired=Math.max(0,Math.min(2400-innerWidth,state.x-innerWidth*.36));
  state.camera+=(desired-state.camera)*.10;
  world.style.transform=`translateX(${-state.camera}px)`;
@@ -243,4 +226,111 @@ function loop(t){
 
  requestAnimationFrame(loop);
 }
+
+/* ---------- GRAVKAMMER 4.6 ---------- */
+const chamber=$("chamber"),journal=$("journal"),chamberAurora=$("chamberAurora");
+const chamberText=$("chamberDialogText"),chamberObjective=$("chamberObjective"),chamberProgress=$("chamberProgress");
+const sarcophagus=$("sarcophagus"),symbolPuzzle=$("symbolPuzzle"),treasureChest=$("treasureChest"),compassArtifact=$("compassArtifact");
+let chamberX=7,chamberLeft=false,chamberRight=false,chamberStage=0,glyphs=[];
+
+function chamberSay(text){chamberText.textContent=text}
+function chamberGoal(text,n){chamberObjective.textContent=text;chamberProgress.textContent=n+" / 3"}
+
+enterChamberBtn.onclick=()=>{
+  show(chamber);
+  chamberX=7;
+  chamberAurora.style.left=chamberX+"%";
+  chamberStage=0;
+  glyphs=[];
+  symbolPuzzle.classList.remove("solved");
+  symbolPuzzle.querySelectorAll("button").forEach(b=>b.classList.remove("selected"));
+  sarcophagus.classList.remove("open");
+  treasureChest.classList.remove("revealed","open");
+  compassArtifact.classList.remove("show");
+  chamberGoal("Undersøk hieroglyfene",1);
+  chamberSay("Utrolig... veggene er dekket av hieroglyfer. Ta deg tid til å se.");
+};
+
+function chamberHold(id,key){
+  const b=$(id);
+  const down=e=>{e.preventDefault();if(key==="left")chamberLeft=true;else chamberRight=true};
+  const up=e=>{e.preventDefault();if(key==="left")chamberLeft=false;else chamberRight=false};
+  ["pointerdown","touchstart"].forEach(t=>b.addEventListener(t,down,{passive:false}));
+  ["pointerup","pointercancel","pointerleave","touchend"].forEach(t=>b.addEventListener(t,up,{passive:false}));
+}
+chamberHold("chamberLeft","left");
+chamberHold("chamberRight","right");
+
+symbolPuzzle.querySelectorAll("button").forEach(button=>{
+  button.onclick=()=>{
+    if(chamberStage!==1)return;
+    glyphs.push(button.dataset.glyph);
+    button.classList.add("selected");
+    if(glyphs.length===3){
+      if(glyphs.join(",")==="sun,eye,ankh"){
+        chamberStage=2;
+        symbolPuzzle.classList.add("solved");
+        sarcophagus.classList.add("open");
+        treasureChest.classList.add("revealed");
+        chamberGoal("Undersøk gullkisten",3);
+        chamberSay("Sol, øye og liv. Sarkofagen skjulte en ny sokkel... og en gullkiste.");
+      }else{
+        chamberSay("Rekkefølgen er feil. Les veggen fra soloppgang mot livstegnet.");
+        glyphs=[];
+        setTimeout(()=>symbolPuzzle.querySelectorAll("button").forEach(b=>b.classList.remove("selected")),450);
+      }
+    }
+  };
+});
+
+$("chamberInspect").onclick=()=>{
+  if(chamberStage===0){
+    if(chamberX<30){
+      chamberSay("Jeg må gå nærmere hieroglyfene i midten av kammeret.");
+      return;
+    }
+    chamberStage=1;
+    chamberGoal("Løs vokternes rekkefølge",2);
+    chamberSay("Innskriften sier: Solen ser. Øyet vokter. Livet åpner.");
+    return;
+  }
+  if(chamberStage===1){
+    chamberSay("Trykk symbolene i denne rekkefølgen: sol, øye og ankh.");
+    return;
+  }
+  if(chamberStage===2){
+    if(chamberX<43){
+      chamberSay("Jeg må stå nærmere gullkisten.");
+      return;
+    }
+    chamberStage=3;
+    treasureChest.classList.add("open");
+    compassArtifact.classList.add("show");
+    chamberGoal("Før funnet i feltdagboken",3);
+    chamberSay("Et kompass... men nålen peker ikke mot nord. Den peker mot Mykene.");
+    setTimeout(()=>show(journal),2500);
+  }
+};
+
+$("closeJournal").onclick=()=>show(chamber);
+
+function chamberLoop(){
+  if(chamber.classList.contains("active")){
+    if(chamberLeft){
+      chamberX-=.42;
+      chamberAurora.classList.add("face-left","walk");
+    }
+    if(chamberRight){
+      chamberX+=.42;
+      chamberAurora.classList.remove("face-left");
+      chamberAurora.classList.add("walk");
+    }
+    if(!chamberLeft&&!chamberRight)chamberAurora.classList.remove("walk");
+    chamberX=Math.max(4,Math.min(83,chamberX));
+    chamberAurora.style.left=chamberX+"%";
+  }
+  requestAnimationFrame(chamberLoop);
+}
+requestAnimationFrame(chamberLoop);
+
 })();
