@@ -269,7 +269,7 @@ enterChamberBtn.onclick=()=>{
   cinematicBars.classList.add("active");
   say("Vent... døren fortsetter å åpne seg.");
 
-  setTimeout(()=>innerDoor.classList.remove("passed");innerDoor.classList.add("open"),350);
+  setTimeout(()=>{innerDoor.classList.remove("passed");innerDoor.classList.add("open");},350);
   setTimeout(()=>{
     transitionFade.classList.remove("hidden");
     transitionFade.classList.add("active");
