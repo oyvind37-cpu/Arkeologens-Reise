@@ -10,7 +10,99 @@ function show(s){screens.forEach(x=>x.classList.remove("active"));s.classList.ad
 function say(t){dialogText.textContent=t;state.idle=performance.now()}
 function objective(t,n){$("objective").textContent=t;$("progress").textContent=n+" / 4"}
 
-$("startBtn").onclick=()=>{
+const musicTrack=$("musicTrack");
+const musicIntroBtn=$("musicIntroBtn");
+const musicGameBtn=$("musicGameBtn");
+let musicWanted=true;
+let fallbackAudio=null;
+
+musicTrack.volume=.38;
+
+function startFallbackMusic(){
+  if(fallbackAudio)return;
+  try{
+    const AudioContext=window.AudioContext||window.webkitAudioContext;
+    const ac=new AudioContext();
+    const master=ac.createGain();
+    master.gain.value=.055;
+    master.connect(ac.destination);
+
+    const frequencies=[55,82.41,110,164.81];
+    const oscillators=[];
+    frequencies.forEach((frequency,index)=>{
+      const osc=ac.createOscillator();
+      const gain=ac.createGain();
+      osc.type=index%2===0?"sine":"triangle";
+      osc.frequency.value=frequency;
+      gain.gain.value=index===0?.75:.18;
+      osc.connect(gain).connect(master);
+      osc.start();
+      oscillators.push({osc,gain});
+    });
+
+    const lfo=ac.createOscillator();
+    const lfoGain=ac.createGain();
+    lfo.frequency.value=.075;
+    lfoGain.gain.value=.018;
+    lfo.connect(lfoGain).connect(master.gain);
+    lfo.start();
+
+    fallbackAudio={ac,master,oscillators,lfo};
+  }catch(error){
+    console.log("Reservemusikk kunne ikke starte:",error);
+  }
+}
+
+async function startMusic(){
+  if(!musicWanted)return;
+  try{
+    musicTrack.currentTime=0;
+    await musicTrack.play();
+  }catch(error){
+    console.log("MP3 kunne ikke spilles. Starter reservemusikk.",error);
+    startFallbackMusic();
+  }
+}
+
+function stopMusic(){
+  musicTrack.pause();
+  if(fallbackAudio){
+    fallbackAudio.master.gain.setTargetAtTime(0,fallbackAudio.ac.currentTime,.08);
+  }
+}
+
+function resumeFallback(){
+  if(fallbackAudio){
+    fallbackAudio.master.gain.setTargetAtTime(.055,fallbackAudio.ac.currentTime,.08);
+    fallbackAudio.ac.resume();
+  }else{
+    startFallbackMusic();
+  }
+}
+
+function updateMusicButtons(){
+  musicIntroBtn.textContent=musicWanted?"♫ MUSIKK PÅ":"♫ MUSIKK AV";
+  musicIntroBtn.classList.toggle("off",!musicWanted);
+  musicGameBtn.textContent=musicWanted?"♫":"♪";
+  musicGameBtn.classList.toggle("off",!musicWanted);
+}
+
+function toggleMusic(){
+  musicWanted=!musicWanted;
+  updateMusicButtons();
+  if(musicWanted){
+    musicTrack.play().catch(()=>resumeFallback());
+  }else{
+    stopMusic();
+  }
+}
+
+musicIntroBtn.onclick=toggleMusic;
+musicGameBtn.onclick=toggleMusic;
+updateMusicButtons();
+
+$("startBtn").onclick=async()=>{
+  await startMusic();
   show($("game"));
   say("Vi tar det rolig. Gå mot høyre og se etter noe uvanlig.");
   requestAnimationFrame(loop);

@@ -4,9 +4,6 @@ button{font:inherit;color:inherit;border:0}.screen{display:none;position:absolut
 .intro-bg{position:absolute;inset:-2%;background:url("intro.png") center top/cover no-repeat;animation:zoom 14s ease-in-out infinite alternate}
 .shade{position:absolute;inset:0;background:radial-gradient(circle at 48% 40%,transparent 0 35%,rgba(0,0,0,.25) 58%,rgba(0,0,0,.88)),linear-gradient(transparent 50%,rgba(0,0,0,.82))}
 .dust:before,.dust:after{content:"";position:absolute;width:3px;height:3px;border-radius:50%;background:#ffc95e;box-shadow:12vw 32vh #ffc95e,31vw 54vh #dfaa45,55vw 28vh #ffc95e,73vw 48vh #ffc95e,87vw 65vh #dfaa45;animation:dust 6s linear infinite}.dust:after{animation-delay:-3s}
-.title{position:absolute;top:max(4rem,env(safe-area-inset-top));left:5%;right:5%;text-align:center;text-shadow:0 4px 16px #000}.title h1{margin:0;color:#dfa94f;font:900 clamp(2rem,8vw,4.4rem) Georgia,serif}.title p{color:#f1dbb0}
-.aurora-intro{position:absolute;left:6%;right:6%;bottom:23%;display:flex;align-items:center;gap:12px;padding:12px;border:1px solid #a97b37;border-radius:16px;background:rgba(0,0,0,.68)}
-.portrait,.dialog-face{background:url("aurora_face.jpg") center/cover no-repeat;border-radius:50%;border:2px solid #d2a04c}.portrait{width:70px;height:70px;flex:none}.aurora-intro p{color:#eedab0}
 #startBtn{position:absolute;left:12%;right:12%;bottom:calc(6% + env(safe-area-inset-bottom));height:72px;border:2px solid #d5aa55;border-radius:20px;background:linear-gradient(#5d8135,#36521f);font-size:1.35rem;font-weight:900;animation:pulse 1.7s infinite}
 
 #game{background:#080604}#world{position:absolute;left:0;top:0;width:2400px;height:100%;transform:translateX(0);will-change:transform}
@@ -53,3 +50,58 @@ button{font:inherit;color:inherit;border:0}.screen{display:none;position:absolut
 .controls{position:absolute;z-index:90;left:0;right:0;bottom:calc(.7rem + env(safe-area-inset-bottom));display:flex;justify-content:space-between;padding:0 1rem}.controls>div{display:flex;gap:8px}.controls button{min-width:58px;height:56px;border-radius:15px;border:1px solid #c19148;background:rgba(15,13,11,.88);font-weight:900}.controls .primary{background:#486d2a}.controls .primary.ready{box-shadow:0 0 18px #e8b95e;filter:brightness(1.18)}
 @keyframes zoom{to{transform:scale(1.055) translateY(-1%)}}@keyframes dust{to{transform:translateY(-38px);opacity:.18}}@keyframes pulse{50%{transform:scale(1.035);filter:brightness(1.15)}}@keyframes mist{from{transform:translateX(-5%)}to{transform:translateX(8%)}}@keyframes flame{to{transform:scale(.9,1.12) rotate(2deg)}}@keyframes blink{0%,46%,48%,100%{opacity:0}47%{opacity:1}}@keyframes leg{from{transform:rotate(23deg)}to{transform:rotate(-23deg)}}@keyframes arm{from{transform:rotate(24deg)}to{transform:rotate(-24deg)}}@keyframes bob{to{transform:translateY(-3px)}}@keyframes jump{0%,100%{transform:translateY(0)}47%{transform:translateY(-165px)}}@keyframes look{50%{transform:rotate(-8deg) translateY(2px)}}@keyframes note{0%{transform:scale(.7);opacity:0}25%,75%{transform:scale(1);opacity:1}100%{opacity:0}}@keyframes arrowBurst{0%{opacity:0;transform:translateX(0)}25%{opacity:1}100%{opacity:0;transform:translateX(-190px)}}@keyframes fallDust{0%{opacity:0;transform:translateY(-10px) scale(.7)}25%{opacity:1}100%{opacity:0;transform:translateY(180px) scale(1.2)}}
 @media(min-width:800px){#app{position:relative;max-width:620px;height:100%;margin:auto;box-shadow:0 0 70px #000}body{background:#090705}}
+/* 4.4: ren intro og lydkontroller */
+.intro-shade{
+  background:
+    linear-gradient(rgba(0,0,0,.03),rgba(0,0,0,.08) 55%,rgba(0,0,0,.82) 100%);
+}
+.intro-quote{
+  position:absolute;
+  left:6%;
+  right:6%;
+  bottom:21%;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:11px 13px;
+  border:1px solid rgba(191,145,67,.72);
+  border-radius:16px;
+  background:rgba(0,0,0,.74);
+  box-shadow:0 5px 26px rgba(0,0,0,.45);
+}
+.intro-quote .portrait{width:58px;height:58px;flex:none}
+.intro-quote p{margin:0;color:#f0dab0;font-size:.95rem;line-height:1.25}
+.music-intro{
+  position:absolute;
+  z-index:20;
+  top:calc(.65rem + env(safe-area-inset-top));
+  left:.7rem;
+  min-width:112px;
+  height:42px;
+  padding:0 .8rem;
+  border:1px solid #b88b42;
+  border-radius:10px;
+  background:rgba(0,0,0,.72);
+  color:#f0c46d;
+  font-size:.76rem;
+  font-weight:900;
+}
+.music-game{
+  position:absolute;
+  z-index:95;
+  top:calc(5.8rem + env(safe-area-inset-top));
+  right:.75rem;
+  width:45px;
+  height:45px;
+  border:1px solid #b88b42;
+  border-radius:50%;
+  background:rgba(0,0,0,.75);
+  color:#f0c46d;
+  font-size:1.15rem;
+  font-weight:900;
+}
+.music-intro.off,.music-game.off{opacity:.58;color:#b9a789}
+#startBtn{
+  z-index:20;
+  bottom:calc(5% + env(safe-area-inset-bottom));
+}

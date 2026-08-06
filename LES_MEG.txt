@@ -1,6 +1,6 @@
-ARKEOLOGENS REISE 4.3
+ARKEOLOGENS REISE 4.4
 
-Erstatt disse filene i GitHub:
+Last opp og erstatt:
 - index.html
 - style.css
 - game.js
@@ -8,11 +8,19 @@ Erstatt disse filene i GitHub:
 - temple.jpg
 - aurora_face.jpg
 
-Nytt i 4.3:
-- Horus-øyet har egen interaksjonssone.
-- UNDERSØK-knappen lyser når Aurora står riktig.
-- Teksthint vises ved veggen.
-- Horus-veggen beveger seg.
-- Støv faller når mekanismen aktiveres.
-- Gravkammerdøren åpnes etterpå.
-- Hoppet er høyere og mykere.
+Last også opp musikkfilen din med nøyaktig dette navnet:
+- mystisk_musikk.mp3
+
+Viktig:
+Safari tillater ikke automatisk musikk ved åpning av nettsiden.
+Musikken starter derfor når spilleren trykker START REISEN.
+
+Hvis mystisk_musikk.mp3 mangler eller ikke kan spilles, starter spillet
+et innebygd atmosfærisk reservesporet.
+
+Nytt i 4.4:
+- HTML-tittel og undertittel er fjernet fra introen, fordi teksten allerede finnes i introbildet.
+- Renere intro med bare sitat og startknapp som HTML-elementer.
+- Musikk starter ved trykk på START REISEN.
+- Musikk av/på-knapp på introen og inne i spillet.
+- Horus-mekanismen fra 4.3 er beholdt uendret.

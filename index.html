@@ -10,11 +10,16 @@
 <body>
 <main id="app">
   <section id="intro" class="screen active">
-    <div class="intro-bg"></div><div class="shade"></div><div class="dust"></div>
-    <div class="title"><h1>ARKEOLOGENS REISE</h1><p>Professor Aurora Vale og det tapte kompasset</p></div>
-    <div class="aurora-intro"><div class="portrait"></div><p>«Historien belønner tålmodighet. Se én gang til.»</p></div>
+    <div class="intro-bg"></div><div class="shade intro-shade"></div><div class="dust"></div>
+    <button id="musicIntroBtn" class="music-intro" aria-label="Slå musikk av eller på">♫ MUSIKK PÅ</button>
+    <div class="intro-quote">
+      <div class="portrait"></div>
+      <p>«Historien belønner tålmodighet. Se én gang til.»</p>
+    </div>
     <button id="startBtn">START REISEN</button>
   </section>
+
+  <audio id="musicTrack" src="mystisk_musikk.mp3" preload="auto" loop></audio>
 
   <section id="game" class="screen">
     <div id="world">
@@ -48,7 +53,7 @@
       </div>
     </div>
 
-    <div class="hud"><div><b>EGYPT</b><small>Kongenes dal</small></div><div><b id="objective">Finn inngangen</b><small id="progress">1 / 4</small></div></div>
+    <button id="musicGameBtn" class="music-game" aria-label="Slå musikk av eller på">♫</button><div class="hud"><div><b>EGYPT</b><small>Kongenes dal</small></div><div><b id="objective">Finn inngangen</b><small id="progress">1 / 4</small></div></div>
     <div id="dialog" class="dialog"><div class="dialog-face"></div><div><b>AURORA</b><p id="dialogText">Vi tar det rolig. Gå mot høyre og se etter noe uvanlig.</p></div></div>
 
     <div id="nearHint" class="near-hint hidden">UNDERSØK HORUS-ØYET</div>
