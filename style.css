@@ -503,3 +503,180 @@ button{font:inherit;color:inherit;border:0}.screen{display:none;position:absolut
  background:rgba(0,0,0,.75);color:#f0c46d;
  font-size:1.15rem;font-weight:900;
 }
+
+/* =========================================================
+   v5.1 – AURORA VALE: NY MENNESKELIG KROPP OG ANIMASJON
+   ========================================================= */
+.aurora{width:116px;height:224px}
+.chamber-aurora{width:104px;height:198px}
+.desert-aurora{width:112px;height:216px}
+
+.human-rig{position:absolute;inset:0;transform-origin:50% 100%}
+.aurora.face-left .human-rig,
+.chamber-aurora.face-left .human-rig,
+.desert-aurora.face-left .human-rig{transform:scaleX(-1)}
+
+.human-rig .head,
+.human-rig .chamber-head,
+.human-rig .desert-head{
+  position:absolute;left:36px;top:0;width:49px;height:58px;
+  border-radius:48% 48% 44% 44%;overflow:hidden;z-index:20;
+  border:1px solid #69452f;background:#9d6849;
+  box-shadow:0 3px 8px rgba(0,0,0,.35);
+}
+.chamber-aurora .human-rig .chamber-head{left:32px;width:45px;height:53px}
+.desert-aurora .human-rig .desert-head{left:34px;width:47px;height:56px}
+
+.human-rig .face,.human-rig .chamber-face,.human-rig .desert-face{
+  position:absolute;inset:-6px;
+  background:url("aurora_face.jpg") center 34%/148% auto no-repeat;
+  filter:brightness(.88) saturate(.95);
+}
+.human-rig .hair,.human-rig .chamber-hair,.human-rig .desert-hair{
+  position:absolute;left:-5px;right:-4px;top:-7px;height:28px;
+  border-radius:62% 58% 34% 36%;background:#20130c;opacity:.82;
+}
+.human-rig .blink{
+  position:absolute;left:13px;right:9px;top:28px;height:3px;
+  background:#6d4935;opacity:0;animation:blink 5.5s infinite;
+}
+
+.human-rig .neck{
+  position:absolute;left:51px;top:51px;width:18px;height:17px;
+  border-radius:5px;background:#9f6848;z-index:10;
+}
+.chamber-aurora .human-rig .neck{left:44px;top:48px;width:17px;height:15px}
+.desert-aurora .human-rig .neck{left:48px;top:50px}
+
+.human-rig .shoulders{
+  position:absolute;left:22px;top:62px;width:77px;height:25px;
+  border-radius:48% 48% 28% 28%;background:#566047;z-index:7;
+}
+.chamber-aurora .human-rig .shoulders{left:18px;top:58px;width:70px;height:23px}
+.desert-aurora .human-rig .shoulders{left:20px;top:60px;width:74px;height:24px}
+
+.human-rig .field-jacket{
+  position:absolute;left:30px;top:70px;width:60px;height:72px;
+  clip-path:polygon(8% 0,92% 0,100% 82%,72% 100%,28% 100%,0 82%);
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.18),transparent 35%,rgba(255,255,255,.08) 53%,rgba(0,0,0,.22)),
+    #5e684c;
+  border-radius:10px 10px 15px 15px;z-index:8;
+  box-shadow:inset 0 -9px 13px rgba(0,0,0,.18);
+}
+.chamber-aurora .human-rig .field-jacket{left:25px;top:65px;width:55px;height:65px}
+.desert-aurora .human-rig .field-jacket{left:28px;top:68px;width:58px;height:69px}
+
+.human-rig .waist-belt{
+  position:absolute;left:31px;top:128px;width:58px;height:10px;
+  border-radius:5px;background:#493621;z-index:14;
+}
+.human-rig .waist-belt:before,.human-rig .waist-belt:after{
+  content:"";position:absolute;top:7px;width:12px;height:20px;
+  border-radius:3px;background:#3b2d1d;
+}
+.human-rig .waist-belt:before{left:2px}.human-rig .waist-belt:after{right:2px}
+.human-rig .waist-belt i{
+  position:absolute;left:25px;top:1px;width:9px;height:7px;
+  border:1px solid #b58b4b;border-radius:2px;
+}
+
+.human-rig .hips{
+  position:absolute;left:35px;top:138px;width:50px;height:25px;
+  border-radius:42% 42% 34% 34%;background:#766d55;z-index:6;
+}
+.chamber-aurora .human-rig .hips{left:30px;top:130px;width:46px;height:23px}
+.desert-aurora .human-rig .hips{left:33px;top:135px;width:48px;height:24px}
+
+.human-rig .backpack{
+  position:absolute;left:13px;top:73px;width:31px;height:66px;
+  border-radius:10px 8px 11px 11px;background:#2f2d24;
+  border:2px solid #594931;z-index:5;
+}
+.chamber-aurora .human-rig .backpack{left:10px;top:68px;width:28px;height:60px}
+.desert-aurora .human-rig .backpack{left:11px;top:71px;width:30px;height:63px}
+
+.human-rig .upper-arm{
+  position:absolute;top:72px;width:17px;height:52px;border-radius:9px;
+  background:linear-gradient(#6b7256 0 42%,#a06a4b 43% 100%);
+  transform-origin:50% 8px;z-index:9;
+}
+.human-rig .arm-left{left:20px;transform:rotate(8deg)}
+.human-rig .arm-right{left:83px;transform:rotate(-9deg)}
+.chamber-aurora .human-rig .arm-left{left:16px}.chamber-aurora .human-rig .arm-right{left:75px}
+.desert-aurora .human-rig .arm-left{left:18px}.desert-aurora .human-rig .arm-right{left:80px}
+
+.human-rig .forearm{
+  position:absolute;left:1px;top:43px;width:15px;height:46px;
+  border-radius:8px;background:#a06a4b;transform-origin:50% 4px;
+}
+.human-rig .hand{
+  position:absolute;left:2px;top:83px;width:13px;height:17px;
+  border-radius:50% 50% 45% 45%;background:#a66d4d;
+}
+
+.human-rig .thigh{
+  position:absolute;top:151px;width:20px;height:43px;
+  border-radius:9px 9px 7px 7px;background:#6d6651;
+  transform-origin:50% 5px;z-index:4;
+}
+.human-rig .thigh-left{left:38px}.human-rig .thigh-right{left:63px}
+.chamber-aurora .human-rig .thigh{top:142px;height:39px;width:18px}
+.chamber-aurora .human-rig .thigh-left{left:33px}.chamber-aurora .human-rig .thigh-right{left:55px}
+.desert-aurora .human-rig .thigh{top:148px;height:42px}
+.desert-aurora .human-rig .thigh-left{left:36px}.desert-aurora .human-rig .thigh-right{left:60px}
+
+.human-rig .shin{
+  position:absolute;left:1px;top:36px;width:18px;height:42px;
+  border-radius:7px;background:#3c3b35;transform-origin:50% 4px;
+}
+.human-rig .boot{
+  position:absolute;left:-3px;top:72px;width:27px;height:15px;
+  border-radius:7px 14px 4px 5px;background:#171512;
+  box-shadow:inset 0 -3px 0 #29241e;
+}
+
+.human-rig .scarf-tail{
+  position:absolute;left:72px;top:61px;width:36px;height:12px;
+  border-radius:10px;background:#78644b;transform:rotate(11deg);
+  transform-origin:0 50%;z-index:6;animation:scarfWave 2.5s ease-in-out infinite alternate;
+}
+.human-rig .hand-note{position:absolute;left:93px;top:108px;font-size:1.15rem;opacity:0;z-index:30}
+
+.aurora:not(.walk):not(.jump) .human-rig,
+.chamber-aurora:not(.walk) .human-rig,
+.desert-aurora:not(.walk) .human-rig{
+  animation:humanBreath 3.2s ease-in-out infinite;
+}
+.aurora.walk .human-rig,
+.chamber-aurora.walk .human-rig,
+.desert-aurora.walk .human-rig{
+  animation:humanWalkBob .42s ease-in-out infinite;
+}
+.aurora.walk .arm-left,.chamber-aurora.walk .arm-left,.desert-aurora.walk .arm-left{animation:humanArm .42s ease-in-out infinite alternate}
+.aurora.walk .arm-right,.chamber-aurora.walk .arm-right,.desert-aurora.walk .arm-right{animation:humanArm .42s -.42s ease-in-out infinite alternate}
+.aurora.walk .thigh-left,.chamber-aurora.walk .thigh-left,.desert-aurora.walk .thigh-left{animation:humanThigh .42s ease-in-out infinite alternate}
+.aurora.walk .thigh-right,.chamber-aurora.walk .thigh-right,.desert-aurora.walk .thigh-right{animation:humanThigh .42s -.42s ease-in-out infinite alternate}
+.aurora.walk .thigh-left .shin,.chamber-aurora.walk .thigh-left .shin,.desert-aurora.walk .thigh-left .shin{animation:humanKnee .42s ease-in-out infinite alternate}
+.aurora.walk .thigh-right .shin,.chamber-aurora.walk .thigh-right .shin,.desert-aurora.walk .thigh-right .shin{animation:humanKnee .42s -.42s ease-in-out infinite alternate}
+
+.aurora.observe .human-rig{animation:inspectLean 1.5s ease-in-out}
+.aurora.observe .arm-right{animation:inspectReach 1.5s ease-in-out}
+.aurora.observe .hand-note{opacity:1;animation:note 1.7s ease-in-out}
+
+@keyframes humanBreath{0%,100%{transform:translateY(0) scaleY(1)}50%{transform:translateY(-1px) scaleY(1.008)}}
+@keyframes humanWalkBob{0%,100%{transform:translateY(0) rotate(-.7deg)}50%{transform:translateY(-4px) rotate(.7deg)}}
+@keyframes humanArm{from{transform:rotate(24deg)}to{transform:rotate(-25deg)}}
+@keyframes humanThigh{from{transform:rotate(23deg)}to{transform:rotate(-21deg)}}
+@keyframes humanKnee{from{transform:rotate(7deg)}to{transform:rotate(19deg)}}
+@keyframes scarfWave{to{transform:rotate(18deg) translateX(3px)}}
+@keyframes inspectLean{0%,100%{transform:none}45%,70%{transform:translateX(5px) rotate(3deg)}}
+@keyframes inspectReach{0%,100%{transform:rotate(-9deg)}45%,70%{transform:rotate(-54deg)}}
+
+/* Skygger følger den nye kroppen */
+.shadow{left:13px;width:90px}
+.chamber-shadow{left:9px;width:82px}
+.desert-shadow{left:10px;width:88px}
+
+/* Fjern gammel dørflate når inngangen er ferdig åpnet */
+.inner-door.passed{opacity:0;visibility:hidden;transition:opacity .55s ease,visibility .55s}

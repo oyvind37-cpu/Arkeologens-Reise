@@ -269,7 +269,7 @@ enterChamberBtn.onclick=()=>{
   cinematicBars.classList.add("active");
   say("Vent... døren fortsetter å åpne seg.");
 
-  setTimeout(()=>innerDoor.classList.add("open"),350);
+  setTimeout(()=>innerDoor.classList.remove("passed");innerDoor.classList.add("open"),350);
   setTimeout(()=>{
     transitionFade.classList.remove("hidden");
     transitionFade.classList.add("active");
@@ -303,6 +303,7 @@ enterChamberBtn.onclick=()=>{
       setTimeout(()=>chamberAurora.classList.remove("stop-step"),250);
       chamberCamera.classList.remove("entering");
       chamberCamera.classList.add("settled");
+      innerDoor.classList.add("passed");
       chamberGoal("Undersøk hieroglyfene",1);
       chamberSay("Utrolig... veggene er dekket av hieroglyfer. Ta deg tid til å se.");
       cinematicBars.classList.remove("active");

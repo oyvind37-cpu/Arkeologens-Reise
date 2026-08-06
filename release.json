@@ -1,6 +1,6 @@
 {
   "name": "Arkeologens Reise",
-  "version": "5.0",
+  "version": "5.1",
   "entry": "index.html",
   "platform": "HTML5 / GitHub Pages",
   "files": [
@@ -12,5 +12,5 @@
     "temple.jpg",
     "mystisk_musikk.mp3"
   ],
-  "notes": "Clean repository build. Old prototype modules removed."
+  "notes": "Aurora body redesign, natural proportions, breathing, improved walk cycle, doorway cleanup."
 }
