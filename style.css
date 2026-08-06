@@ -294,3 +294,80 @@ button{font:inherit;color:inherit;border:0}.screen{display:none;position:absolut
 @keyframes goldDust{from{transform:translateY(120px);opacity:0}30%{opacity:1}to{transform:translateY(-80px);opacity:0}}
 @keyframes artifactRise{0%{opacity:0;transform:translate(-50%,40px) scale(.4)}60%{opacity:1;transform:translate(-50%,-55px) scale(1.25)}100%{opacity:1;transform:translate(-50%,-30px) scale(1)}}
 @keyframes sketchIn{from{opacity:0;filter:grayscale(1) sepia(.5) blur(5px);transform:translate(-50%,-50%) scale(.55)}to{opacity:1;filter:grayscale(1) sepia(.5);transform:translate(-50%,-50%) scale(1)}}
+
+/* 4.7: filmatisk overgang og mykere bevegelse */
+.chamber-camera{
+  position:absolute;
+  inset:0;
+  transform-origin:50% 55%;
+  transition:transform 1.8s cubic-bezier(.22,.65,.22,1),filter 1.2s ease;
+}
+.chamber-camera.entering{
+  transform:scale(1.16) translateY(2%);
+  filter:brightness(.78);
+}
+.chamber-camera.settled{
+  transform:scale(1);
+  filter:brightness(1);
+}
+.inner-door{
+  position:absolute;
+  z-index:40;
+  left:50%;
+  bottom:23%;
+  width:170px;
+  height:285px;
+  transform:translateX(-50%);
+  overflow:hidden;
+  border:10px solid #63462b;
+  box-shadow:0 0 35px #000;
+}
+.inner-door-panel{
+  position:absolute;
+  top:0;
+  width:50%;
+  height:100%;
+  background:linear-gradient(#4b3420,#20150c);
+  transition:transform 1.5s cubic-bezier(.45,.02,.2,1);
+}
+.left-panel{left:0;border-right:2px solid #8a6540}
+.right-panel{right:0;border-left:2px solid #8a6540}
+.inner-door.open .left-panel{transform:translateX(-102%)}
+.inner-door.open .right-panel{transform:translateX(102%)}
+.inner-darkness{
+  position:absolute;inset:0;background:radial-gradient(circle at 50% 70%,#17100a,#000 72%);z-index:-1;
+}
+.cinematic-bars{
+  position:absolute;inset:0;z-index:180;pointer-events:none;
+}
+.cinematic-bars .bar{
+  position:absolute;left:0;right:0;height:10%;background:#000;
+  transition:transform .65s ease;
+}
+.cinematic-bars .top{top:0;transform:translateY(-100%)}
+.cinematic-bars .bottom{bottom:0;transform:translateY(100%)}
+.cinematic-bars.active .top{transform:translateY(0)}
+.cinematic-bars.active .bottom{transform:translateY(0)}
+.transition-fade{
+  position:absolute;inset:0;z-index:190;background:#000;opacity:0;pointer-events:none;
+}
+.transition-fade.active{animation:fadePassage 1.9s ease forwards}
+@keyframes fadePassage{
+  0%{opacity:0}
+  45%{opacity:1}
+  65%{opacity:1}
+  100%{opacity:0}
+}
+.chamber-aurora{
+  transition:left .08s ease-out,transform .2s ease-out;
+}
+.chamber-aurora.walk{
+  animation:bob .28s infinite alternate;
+}
+.chamber-aurora.walk .chamber-body{
+  animation:bodySway .42s ease-in-out infinite alternate;
+}
+.chamber-aurora.start-step{transform:translateY(-2px) scale(.99)}
+.chamber-aurora.stop-step{animation:settleStep .22s ease-out}
+@keyframes bodySway{from{transform:rotate(-1.5deg)}to{transform:rotate(1.5deg)}}
+@keyframes settleStep{0%{transform:translateY(-2px)}100%{transform:translateY(0)}}

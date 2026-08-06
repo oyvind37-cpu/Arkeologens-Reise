@@ -1,4 +1,4 @@
-ARKEOLOGENS REISE 4.6 – GRAVKAMMERET
+ARKEOLOGENS REISE 4.7
 
 Last opp og erstatt:
 - index.html
@@ -9,14 +9,12 @@ Last opp og erstatt:
 - aurora_face.jpg
 - mystisk_musikk.mp3
 
-Viktig i 4.6:
-1. Aktiver Horus-øyet som før.
-2. En grønn knapp: GÅ INN I SKATTEKAMMERET vises.
-3. Trykk på den for å gå til en helt egen kammer-scene.
-4. Gå mot midten og trykk UNDERSØK.
-5. Løs symbolrekken: sol, øye, ankh.
-6. Sarkofagen åpner veien til gullkisten.
-7. Undersøk kisten.
-8. Kompasset finnes og første illustrerte feltdagbokside åpnes.
-
-Dette er laget som en eksplisitt scenebytte-løsning, slik at kammeret ikke kan bli liggende utenfor den synlige banen.
+Nytt i 4.7:
+- Horus-døren åpnes filmatisk.
+- Cinematiske sorte felt vises under overgangen.
+- Kamera zoomer inn mot passasjen.
+- Skjermen mørkner mens Aurora går gjennom døren.
+- Aurora går automatisk inn i skattekammeret.
+- Spilleren får kontroll først når hun står inne i rommet.
+- Mykere start og stopp ved gange i kammeret.
+- Mindre statisk glidning fra venstre mot høyre.

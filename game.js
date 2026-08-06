@@ -228,7 +228,7 @@ function loop(t){
 }
 
 /* ---------- GRAVKAMMER 4.6 ---------- */
-const chamber=$("chamber"),journal=$("journal"),chamberAurora=$("chamberAurora");
+const chamber=$("chamber"),journal=$("journal"),chamberAurora=$("chamberAurora"),chamberCamera=$("chamberCamera"),innerDoor=$("innerDoor"),cinematicBars=$("cinematicBars"),transitionFade=$("transitionFade");
 const chamberText=$("chamberDialogText"),chamberObjective=$("chamberObjective"),chamberProgress=$("chamberProgress");
 const sarcophagus=$("sarcophagus"),symbolPuzzle=$("symbolPuzzle"),treasureChest=$("treasureChest"),compassArtifact=$("compassArtifact");
 let chamberX=7,chamberLeft=false,chamberRight=false,chamberStage=0,glyphs=[];
@@ -237,18 +237,50 @@ function chamberSay(text){chamberText.textContent=text}
 function chamberGoal(text,n){chamberObjective.textContent=text;chamberProgress.textContent=n+" / 3"}
 
 enterChamberBtn.onclick=()=>{
-  show(chamber);
-  chamberX=7;
-  chamberAurora.style.left=chamberX+"%";
-  chamberStage=0;
-  glyphs=[];
-  symbolPuzzle.classList.remove("solved");
-  symbolPuzzle.querySelectorAll("button").forEach(b=>b.classList.remove("selected"));
-  sarcophagus.classList.remove("open");
-  treasureChest.classList.remove("revealed","open");
-  compassArtifact.classList.remove("show");
-  chamberGoal("Undersøk hieroglyfene",1);
-  chamberSay("Utrolig... veggene er dekket av hieroglyfer. Ta deg tid til å se.");
+  enterChamberBtn.classList.add("hidden");
+  cinematicBars.classList.remove("hidden");
+  cinematicBars.classList.add("active");
+  say("Vent... døren fortsetter å åpne seg.");
+
+  setTimeout(()=>innerDoor.classList.add("open"),350);
+  setTimeout(()=>{
+    transitionFade.classList.remove("hidden");
+    transitionFade.classList.add("active");
+  },1100);
+
+  setTimeout(()=>{
+    show(chamber);
+    chamberCamera.classList.add("entering");
+    chamberX=3;
+    chamberAurora.style.left=chamberX+"%";
+    chamberAurora.classList.add("walk");
+    chamberStage=0;
+    glyphs=[];
+    symbolPuzzle.classList.remove("solved");
+    symbolPuzzle.querySelectorAll("button").forEach(b=>b.classList.remove("selected"));
+    sarcophagus.classList.remove("open");
+    treasureChest.classList.remove("revealed","open");
+    compassArtifact.classList.remove("show");
+    chamberGoal("Gå inn i kammeret",1);
+    chamberSay("Luften er annerledes her inne... ingen har vært her på svært lenge.");
+  },1850);
+
+  let autoWalk=setInterval(()=>{
+    chamberX+=1.25;
+    chamberAurora.style.left=chamberX+"%";
+    if(chamberX>=18){
+      clearInterval(autoWalk);
+      chamberAurora.classList.remove("walk");
+      chamberAurora.classList.add("stop-step");
+      setTimeout(()=>chamberAurora.classList.remove("stop-step"),250);
+      chamberCamera.classList.remove("entering");
+      chamberCamera.classList.add("settled");
+      chamberGoal("Undersøk hieroglyfene",1);
+      chamberSay("Utrolig... veggene er dekket av hieroglyfer. Ta deg tid til å se.");
+      cinematicBars.classList.remove("active");
+      setTimeout(()=>cinematicBars.classList.add("hidden"),700);
+    }
+  },70);
 };
 
 function chamberHold(id,key){
@@ -314,18 +346,32 @@ $("chamberInspect").onclick=()=>{
 
 $("closeJournal").onclick=()=>show(chamber);
 
+let chamberVelocity=0;
 function chamberLoop(){
   if(chamber.classList.contains("active")){
+    const accelerating=chamberLeft||chamberRight;
+
     if(chamberLeft){
-      chamberX-=.42;
-      chamberAurora.classList.add("face-left","walk");
-    }
-    if(chamberRight){
-      chamberX+=.42;
+      chamberVelocity=Math.max(chamberVelocity-.07,-.56);
+      chamberAurora.classList.add("face-left","walk","start-step");
+    }else if(chamberRight){
+      chamberVelocity=Math.min(chamberVelocity+.07,.56);
       chamberAurora.classList.remove("face-left");
-      chamberAurora.classList.add("walk");
+      chamberAurora.classList.add("walk","start-step");
+    }else{
+      chamberVelocity*=.72;
+      chamberAurora.classList.remove("start-step");
+      if(Math.abs(chamberVelocity)<.025){
+        chamberVelocity=0;
+        if(chamberAurora.classList.contains("walk")){
+          chamberAurora.classList.remove("walk");
+          chamberAurora.classList.add("stop-step");
+          setTimeout(()=>chamberAurora.classList.remove("stop-step"),220);
+        }
+      }
     }
-    if(!chamberLeft&&!chamberRight)chamberAurora.classList.remove("walk");
+
+    chamberX+=chamberVelocity;
     chamberX=Math.max(4,Math.min(83,chamberX));
     chamberAurora.style.left=chamberX+"%";
   }
