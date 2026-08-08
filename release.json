@@ -1,0 +1,16 @@
+{
+  "name": "Arkeologens Reise",
+  "version": "5.3.2",
+  "entry": "index.html",
+  "platform": "HTML5 / GitHub Pages",
+  "files": [
+    "aurora_face.jpg",
+    "game.js",
+    "index.html",
+    "intro.png",
+    "style.css",
+    "temple.jpg",
+    "mystisk_musikk.mp3"
+  ],
+  "notes": "Clean rebuild from v5.3. Prologue CSS is fully isolated from gameplay. Seven clean portrait MP4 clips, 1/7–7/7 counter, no global mobile rules touching Egypt/chamber/desert. Stable v5.3 gameplay preserved."
+}
