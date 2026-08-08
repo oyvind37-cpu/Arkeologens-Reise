@@ -125,43 +125,43 @@ const prologueScenes=[
   {
     kicker:"OSLO · OLDSAKSSAMLINGEN",
     title:"En vanlig arbeidsdag – helt til telefonen vibrerer",
-    video:"prologue_01_clean.mp4",
+    video:"prologue_01_cinema.mp4",
     text:"Aurora Vale arbeider som professor ved Oldsakssamlingen. Mellom katalogisering, forskning og undervisning kommer det en melding som skal endre planene hennes."
   },
   {
     kicker:"MELDING FRA KAIRO",
     title:"«Kan du ringe meg når du har anledning?»",
-    video:"prologue_02_clean.mp4",
+    video:"prologue_02_cinema.mp4",
     text:"En kollega ved Det egyptiske museum i Kairo skriver at de har gjort et uvanlig funn i et eldre magasin i kjelleren."
   },
   {
     kicker:"TELEFONSAMTALE · KAIRO",
     title:"En eske bak to gamle sfinkser",
-    video:"prologue_03_clean.mp4",
+    video:"prologue_03_cinema.mp4",
     text:"Egyptologen forteller at en trekasse fra en utgraving på 1920-tallet har stått urørt bak to sfinksskulpturer. Ingen ser ut til å ha åpnet den på flere tiår."
   },
   {
     kicker:"FUNNET",
     title:"To forseglede pergamentruller",
-    video:"prologue_04_clean.mp4",
+    video:"prologue_04_cinema.mp4",
     text:"I esken ligger to gamle ruller, begge bundet med bånd og preget med seglet til en ukjent farao. Seglene er intakte – og ingen ønsker å bryte dem."
   },
   {
     kicker:"DET EGYPTISKE MUSEUM · KAIRO",
     title:"Les rullene uten å åpne dem",
-    video:"prologue_05_clean.mp4",
+    video:"prologue_05_cinema.mp4",
     text:"Aurora reiser til Kairo. Teamet bruker avansert røntgenskanning, virtuell utrulling og mønstergjenkjenning med kunstig intelligens for å forsøke å lese teksten uten å bryte seglene."
   },
   {
     kicker:"KOORDINATENE",
     title:"Et punkt ute i ørkenen",
-    video:"prologue_06_clean.mp4",
+    video:"prologue_06_cinema.mp4",
     text:"Etter flere dager dukker det opp koordinater i teksten – lengde- og breddegrad til et punkt utenfor de kjente funnstedene. Aurora bestemmer seg for å undersøke stedet."
   },
   {
     kicker:"UT I ØRKENEN",
     title:"Reisen begynner",
-    video:"prologue_07_clean.mp4",
+    video:"prologue_07_cinema.mp4",
     text:"Museet skaffer en erfaren kamelfører de stoler på. Sammen forlater Aurora Kairo og setter kurs mot et ukjent punkt i ørkenen."
   }
 ];
@@ -184,6 +184,7 @@ function renderPrologue(){
 }
 
 function beginEgypt(){
+  if(fullscreenBtn) fullscreenBtn.style.display="";
   if(prologueVideo){prologueVideo.pause(); prologueVideo.removeAttribute("src"); prologueVideo.load();}
   if(gameStarted)return;
   if(prologueVideo){prologueVideo.pause();}
@@ -194,6 +195,7 @@ function beginEgypt(){
 }
 
 function openPrologue(){
+  if(fullscreenBtn) fullscreenBtn.style.display="none";
   show(prologue);
   prologueIndex=0;
   renderPrologue();
