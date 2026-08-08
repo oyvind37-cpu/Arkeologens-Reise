@@ -1,6 +1,6 @@
 {
   "name": "Arkeologens Reise",
-  "version": "5.3.2",
+  "version": "5.3.3",
   "entry": "index.html",
   "platform": "HTML5 / GitHub Pages",
   "files": [
@@ -12,5 +12,5 @@
     "temple.jpg",
     "mystisk_musikk.mp3"
   ],
-  "notes": "Clean rebuild from v5.3. Prologue CSS is fully isolated from gameplay. Seven clean portrait MP4 clips, 1/7–7/7 counter, no global mobile rules touching Egypt/chamber/desert. Stable v5.3 gameplay preserved."
+  "notes": "Mobile Frame Fix: prologue video moved below iPhone safe area, portrait uses contain instead of cover, entire frame remains visible, story card stays below video, prologue controls no longer compete with fullscreen button."
 }
