@@ -1,0 +1,16 @@
+{
+  "name": "Arkeologens Reise",
+  "version": "5.2.4",
+  "entry": "index.html",
+  "platform": "HTML5 / GitHub Pages",
+  "files": [
+    "aurora_face.jpg",
+    "game.js",
+    "index.html",
+    "intro.png",
+    "style.css",
+    "temple.jpg",
+    "mystisk_musikk.mp3"
+  ],
+  "notes": "Responsive portrait/landscape layout plus a six-scene cinematic prologue: Oldsakssamlingen, Cairo message/call, sealed scroll discovery, non-destructive scan/AI reading, coordinates, and desert expedition. Egypt gameplay logic preserved."
+}
