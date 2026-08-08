@@ -1,0 +1,16 @@
+{
+  "name": "Arkeologens Reise",
+  "version": "5.3",
+  "entry": "index.html",
+  "platform": "HTML5 / GitHub Pages",
+  "files": [
+    "aurora_face.jpg",
+    "game.js",
+    "index.html",
+    "intro.png",
+    "style.css",
+    "temple.jpg",
+    "mystisk_musikk.mp3"
+  ],
+  "notes": "Seven-scene cinematic prologue using real MP4 clips with subtle camera motion. Auto-advance after each 9-second clip, HOPP OVER always available, manual FORTSETT retained. Music continues throughout."
+}
