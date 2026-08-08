@@ -877,3 +877,159 @@ button{font:inherit;color:inherit;border:0}.screen{display:none;position:absolut
 
 /* Prevent character clipping off the right edge in the desert. */
 .desert-aurora{max-width:84px}
+
+
+/* =========================================================
+   v5.2.2 – GRAVKAMMER: DYBDE, LYS OG TYDELIGE LEDETRÅDER
+   ========================================================= */
+
+/* Restore a clearly usable start button. The artwork already contains one,
+   but this real control remains visible near the bottom and always works. */
+#startBtn{
+  display:block!important;
+  position:absolute!important;
+  left:11%!important;
+  right:11%!important;
+  top:auto!important;
+  bottom:4.2%!important;
+  height:74px!important;
+  border:2px solid #e3b95b!important;
+  border-radius:22px!important;
+  background:linear-gradient(#6fa038,#3e681f)!important;
+  color:#fff!important;
+  font-size:clamp(1.25rem,6vw,1.65rem)!important;
+  font-weight:900!important;
+  box-shadow:0 7px 18px rgba(0,0,0,.48), inset 0 1px rgba(255,255,255,.22)!important;
+  z-index:70!important;
+}
+
+/* New cinematic chamber background: actual photographed/painted depth rather than flat CSS walls. */
+.chamber-screen{
+  background:#090604!important;
+  overflow:hidden;
+}
+.chamber-camera{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+}
+.chamber-camera::before{
+  content:"";
+  position:absolute;
+  inset:-3%;
+  background:
+    linear-gradient(to bottom,rgba(0,0,0,.06),rgba(0,0,0,.15) 58%,rgba(0,0,0,.36)),
+    url("chamber_bg_v522.jpg") center center/cover no-repeat;
+  transform:scale(1.035);
+  animation:chamberBreath522 12s ease-in-out infinite alternate;
+  z-index:0;
+}
+.chamber-camera::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 51% 31%,rgba(255,223,155,.15),transparent 25%),
+    linear-gradient(90deg,rgba(0,0,0,.28),transparent 24%,transparent 76%,rgba(0,0,0,.28));
+  z-index:1;
+}
+@keyframes chamberBreath522{
+  from{transform:scale(1.035) translate3d(0,0,0)}
+  to{transform:scale(1.065) translate3d(-.35%,.18%,0)}
+}
+
+/* Hide the old flat environmental construction; keep interactive props. */
+.chamber-ceiling,
+.chamber-wall,
+.chamber-floor,
+.chamber-column,
+.anubis,
+.light-shaft,
+.floating-gold{
+  opacity:0!important;
+  pointer-events:none!important;
+}
+
+/* Ensure interactive elements sit over the new environment. */
+.inner-door{z-index:4!important}
+.sarcophagus{z-index:8!important}
+.symbol-puzzle{z-index:30!important}
+.treasure-chest{z-index:15!important}
+.compass-artifact{z-index:45!important}
+.chamber-aurora{z-index:20!important}
+.chamber-hud,.chamber-dialog,.chamber-controls{z-index:60!important}
+
+/* Give altar/chest more grounding and real shadow. */
+.treasure-chest{
+  filter:drop-shadow(0 18px 13px rgba(0,0,0,.6));
+}
+.treasure-glow{
+  filter:blur(13px)!important;
+  opacity:.48!important;
+}
+
+/* Stone clue in Egypt: unmistakable warm pulse when Aurora is near. */
+.plate.near,
+.plate.active{
+  box-shadow:
+    0 0 0 2px rgba(255,206,100,.72),
+    0 0 22px 8px rgba(255,177,45,.46),
+    inset 0 0 20px rgba(255,205,104,.24)!important;
+  animation:stonePulse522 1.35s ease-in-out infinite!important;
+}
+@keyframes stonePulse522{
+  0%,100%{filter:brightness(1);transform:scale(1)}
+  50%{filter:brightness(1.42);transform:scale(1.035)}
+}
+
+/* Replace anonymous white lines with small Egyptian-gold chevrons. */
+.arrows{
+  display:flex!important;
+  gap:7px!important;
+  align-items:center!important;
+}
+.arrows i{
+  width:20px!important;
+  height:20px!important;
+  border:0!important;
+  border-right:4px solid #e9b957!important;
+  border-bottom:4px solid #e9b957!important;
+  background:transparent!important;
+  transform:rotate(-45deg)!important;
+  box-shadow:2px 2px 6px rgba(255,186,72,.32);
+  animation:arrowPulse522 1.1s ease-in-out infinite!important;
+}
+.arrows i:nth-child(2){animation-delay:.14s!important}
+.arrows i:nth-child(3){animation-delay:.28s!important}
+@keyframes arrowPulse522{
+  0%,100%{opacity:.34;translate:0 0}
+  50%{opacity:1;translate:5px 0}
+}
+
+/* Mobile chamber UI breathes more; scene remains visible behind it. */
+@media (max-width:700px){
+  .chamber-hud{
+    top:1.2%!important;
+    left:2.5%!important;
+    right:2.5%!important;
+    padding:.65rem .75rem!important;
+    background:rgba(8,6,4,.78)!important;
+    backdrop-filter:blur(5px);
+  }
+  .chamber-dialog{
+    top:13.3%!important;
+    left:4%!important;
+    right:4%!important;
+    background:rgba(8,6,4,.76)!important;
+    backdrop-filter:blur(5px);
+  }
+  .symbol-puzzle{
+    top:30.5%!important;
+    background:rgba(12,8,5,.78)!important;
+    backdrop-filter:blur(5px);
+  }
+  .chamber-controls{
+    bottom:2.3%!important;
+  }
+}

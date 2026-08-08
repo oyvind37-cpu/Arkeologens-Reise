@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
 <meta name="theme-color" content="#0b0704">
-<title>Arkeologens Reise 5.2.1</title>
-<link rel="stylesheet" href="style.css">
+<title>Arkeologens Reise 5.2.2</title>
+<link rel="stylesheet" href="style.css?v=5.2.2">
 </head>
 <body>
 <main id="app">
@@ -25,7 +25,7 @@
 
   <audio id="musicTrack" src="mystisk_musikk.mp3" preload="auto" loop></audio>
 
-  <section id="game" class="screen"><div class="build-marker">v5.2.1</div>
+  <section id="game" class="screen"><div class="build-marker">v5.2.2</div>
     <div id="world">
       <div class="temple-bg"></div><div class="sunbeam"></div><div class="mist"></div>
       <div class="ground"></div>
@@ -44,22 +44,13 @@
       <div id="door" class="door"><span>𓂀</span></div>
       <div id="wowLight" class="wow-light"></div>
 
-      <div id="aurora" class="aurora"><div class="shadow"></div>
-        <div class="body human-rig"><div class="aurora-character-sprite"></div></div></div>
-          <div class="neck"></div>
-          <div class="shoulders"></div>
-          <div class="field-jacket"></div>
-          <div class="waist-belt"><i></i></div>
-          <div class="hips"></div>
-          <div class="backpack"></div>
-          <div class="upper-arm arm-left"><span class="forearm"></span><span class="hand"></span></div>
-          <div class="upper-arm arm-right"><span class="forearm"></span><span class="hand"></span></div>
-          <div class="thigh thigh-left"><span class="shin"></span><span class="boot"></span></div>
-          <div class="thigh thigh-right"><span class="shin"></span><span class="boot"></span></div>
-          <div class="scarf-tail"></div>
-          <div class="hand-note">📓</div>
-        </div></div>
+      <div id="aurora" class="aurora">
+        <div class="shadow"></div>
+        <div class="body human-rig"><div class="aurora-character-sprite"></div></div>
+      </div>
     </div>
+
+    <button id="musicGameBtn"    </div>
 
     <button id="musicGameBtn" class="music-game" aria-label="Slå musikk av eller på">♫</button><button id="resetGameBtn" class="reset-game" aria-label="Start kapitlet på nytt">↺</button><div class="hud"><div><b>EGYPT</b><small>Kongenes dal</small></div><div><b id="objective">Finn inngangen</b><small id="progress">1 / 4</small></div></div>
     <div id="dialog" class="dialog"><div class="dialog-face"></div><div><b>AURORA</b><p id="dialogText">Vi tar det rolig. Gå mot høyre og se etter noe uvanlig.</p></div></div>
@@ -117,23 +108,13 @@
 
     <button id="compassArtifact" class="compass-artifact" aria-label="Ta opp det tapte kompasset"></button>
 
-    <div id="chamberAurora" class="chamber-aurora"><div class="chamber-shadow"></div>
-        <div class="chamber-body human-rig"><div class="aurora-character-sprite"></div></div></div>
-          <div class="neck"></div>
-          <div class="shoulders"></div>
-          <div class="field-jacket"></div>
-          <div class="waist-belt"><i></i></div>
-          <div class="hips"></div>
-          <div class="backpack"></div>
-          <div class="upper-arm arm-left"><span class="forearm"></span><span class="hand"></span></div>
-          <div class="upper-arm arm-right"><span class="forearm"></span><span class="hand"></span></div>
-          <div class="thigh thigh-left"><span class="shin"></span><span class="boot"></span></div>
-          <div class="thigh thigh-right"><span class="shin"></span><span class="boot"></span></div>
-          <div class="scarf-tail"></div>
-          <div class="hand-note">📓</div>
-        </div></div>
+    <div id="chamberAurora" class="chamber-aurora">
+      <div class="chamber-shadow"></div>
+      <div class="chamber-body human-rig"><div class="aurora-character-sprite"></div></div>
+    </div>
 
     </div>
+    <div id="chamberExitFade"    </div>
     <div id="chamberExitFade" class="chamber-exit-fade"></div>
     <div id="cinematicBars" class="cinematic-bars hidden">
       <div class="bar top"></div><div class="bar bottom"></div>
@@ -175,23 +156,12 @@
     </div>
     <div class="desert-wind"></div>
 
-    <div id="desertAurora" class="desert-aurora"><div class="desert-shadow"></div>
-        <div class="desert-body human-rig"><div class="aurora-character-sprite"></div></div></div>
-          <div class="neck"></div>
-          <div class="shoulders"></div>
-          <div class="field-jacket"></div>
-          <div class="waist-belt"><i></i></div>
-          <div class="hips"></div>
-          <div class="backpack"></div>
-          <div class="upper-arm arm-left"><span class="forearm"></span><span class="hand"></span></div>
-          <div class="upper-arm arm-right"><span class="forearm"></span><span class="hand"></span></div>
-          <div class="thigh thigh-left"><span class="shin"></span><span class="boot"></span></div>
-          <div class="thigh thigh-right"><span class="shin"></span><span class="boot"></span></div>
-          <div class="scarf-tail"></div>
-          <div class="hand-note">📓</div>
-        </div></div>
+    <div id="desertAurora" class="desert-aurora">
+      <div class="desert-shadow"></div>
+      <div class="desert-body human-rig"><div class="aurora-character-sprite"></div></div>
+    </div>
 
-    <div class="desert-hud">
+    <div class="desert-hud">    <div class="desert-hud">
       <div><b>KONGENES DAL</b><small>Utenfor den glemte graven</small></div>
       <div><b id="desertObjective">Returner til leiren</b><small>Kapittel 1</small></div>
     </div>
@@ -237,7 +207,7 @@
   </section>
 
 </main>
-<script src="game.js?v=5.1.2"></script>
+<script src="game.js?v=5.2.2"></script>
 <script>
 (function(){
   const start=document.getElementById("startBtn");

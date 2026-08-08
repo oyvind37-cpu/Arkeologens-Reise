@@ -198,7 +198,7 @@ $("interact").onclick=()=>{
 
    setTimeout(()=>{
      eyeWall.classList.add("open");
-     nearHint.classList.add("hidden");
+     nearHint.classList.add("hidden"); pressurePlate.classList.remove("near");
      interact.classList.remove("ready");
    },450);
 

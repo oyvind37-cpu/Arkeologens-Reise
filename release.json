@@ -1,6 +1,6 @@
 {
   "name": "Arkeologens Reise",
-  "version": "5.2.1",
+  "version": "5.2.2",
   "entry": "index.html",
   "platform": "HTML5 / GitHub Pages",
   "files": [
@@ -12,5 +12,5 @@
     "temple.jpg",
     "mystisk_musikk.mp3"
   ],
-  "notes": "Approved Aurora character sprite integrated; mobile overlap fixes; visible clickable compass; journal compass upgraded; stable v5.2 gameplay preserved."
+  "notes": "Cinematic depth upgrade for tomb chamber, restored visible START REISEN button, glowing worn stone, gold directional chevrons, mobile chamber UI spacing. Stable v5.2.1 gameplay retained."
 }
