@@ -149,13 +149,13 @@ const prologueScenes=[
   {
     kicker:"DET EGYPTISKE MUSEUM · KAIRO",
     title:"Les rullene uten å åpne dem",
-    video:"prologue_05_cinema.mp4",
+    video:"prologue_05_v537.mp4",
     text:"Aurora reiser til Kairo. Teamet bruker avansert røntgenskanning, virtuell utrulling og mønstergjenkjenning med kunstig intelligens for å forsøke å lese teksten uten å bryte seglene."
   },
   {
     kicker:"KOORDINATENE",
     title:"Et punkt ute i ørkenen",
-    video:"prologue_06_cinema.mp4",
+    video:"prologue_06_v537.mp4",
     text:"Etter flere dager dukker det opp koordinater i teksten – lengde- og breddegrad til et punkt utenfor de kjente funnstedene. Aurora bestemmer seg for å undersøke stedet."
   },
   {

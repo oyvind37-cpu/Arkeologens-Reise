@@ -1,6 +1,6 @@
 {
   "name": "Arkeologens Reise",
-  "version": "5.3.6",
+  "version": "5.3.7",
   "entry": "index.html",
   "platform": "HTML5 / GitHub Pages",
   "files": [
@@ -12,5 +12,5 @@
     "temple.jpg",
     "mystisk_musikk.mp3"
   ],
-  "notes": "Minimal prologue spacing fix. Keeps v5.3.5 cinema images/videos and PWA fullscreen unchanged; moves Back/FORTSETT controls directly below the story card to remove the large empty black gap."
+  "notes": "Scenes 5 and 6 replaced with new clean approved visuals and matching MP4 clips. Scenes 1-4 and 7 unchanged. No baked-in game UI in the two replacement scene images."
 }
