@@ -1,6 +1,6 @@
 {
   "name": "Arkeologens Reise",
-  "version": "5.3.5",
+  "version": "5.3.6",
   "entry": "index.html",
   "platform": "HTML5 / GitHub Pages",
   "files": [
@@ -12,5 +12,5 @@
     "temple.jpg",
     "mystisk_musikk.mp3"
   ],
-  "notes": "Rebuilt all 7 prologue clips from original motifs as true 16:9 cinema MP4s. Removed baked-in portrait filler/picture-in-picture effect. Prologue uses a fixed 16:9 window, story card directly below it, fullscreen button hidden during prologue. Egypt/gameplay untouched."
+  "notes": "Minimal prologue spacing fix. Keeps v5.3.5 cinema images/videos and PWA fullscreen unchanged; moves Back/FORTSETT controls directly below the story card to remove the large empty black gap."
 }

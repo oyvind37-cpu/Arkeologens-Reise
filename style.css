@@ -1507,3 +1507,54 @@ body{
     bottom:3%!important;
   }
 }
+
+
+/* =========================================================
+   v5.3.6 – PROLOG SPACING FIX
+   Kun avstanden mellom tekstkort og navigasjonsknapper endres.
+   ========================================================= */
+
+@media (orientation:portrait) and (max-width:700px){
+
+  #prologue .prologue-copy{
+    bottom:auto!important;
+  }
+
+  /* Controls sit directly below the story card instead of at the screen bottom. */
+  #prologue .prologue-controls{
+    position:absolute!important;
+    left:5%!important;
+    right:5%!important;
+    top:calc(
+      64px + env(safe-area-inset-top)
+      + 56.25vw
+      + 18px
+      + min(31vh, 280px)
+      + 14px
+    )!important;
+    bottom:auto!important;
+    display:flex!important;
+    gap:10px!important;
+    align-items:center!important;
+  }
+
+  #prologue .prologue-controls button{
+    height:50px!important;
+  }
+
+  /* Keep enough room at the bottom on very short screens. */
+  @media (max-height:760px){
+    #prologue .prologue-copy{
+      max-height:26vh!important;
+    }
+    #prologue .prologue-controls{
+      top:calc(
+        64px + env(safe-area-inset-top)
+        + 56.25vw
+        + 12px
+        + min(26vh, 220px)
+        + 10px
+      )!important;
+    }
+  }
+}
