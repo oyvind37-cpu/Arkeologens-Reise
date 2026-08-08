@@ -1,6 +1,6 @@
 {
   "name": "Arkeologens Reise",
-  "version": "5.1.2",
+  "version": "5.2",
   "entry": "index.html",
   "platform": "HTML5 / GitHub Pages",
   "files": [
@@ -12,5 +12,5 @@
     "temple.jpg",
     "mystisk_musikk.mp3"
   ],
-  "notes": "Start button stability fix. Game opens before audio starts. Cache-busting and fallback navigation added."
+  "notes": "Stabil v5.1.2-spillflyt beholdt. Godkjent Aurora v5.2-karakterreferanse lagt ved som fast visuell mal for videre integrasjon."
 }
