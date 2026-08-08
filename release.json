@@ -1,6 +1,6 @@
 {
   "name": "Arkeologens Reise",
-  "version": "5.3.7",
+  "version": "5.3.8",
   "entry": "index.html",
   "platform": "HTML5 / GitHub Pages",
   "files": [
@@ -12,5 +12,5 @@
     "temple.jpg",
     "mystisk_musikk.mp3"
   ],
-  "notes": "Scenes 5 and 6 replaced with new clean approved visuals and matching MP4 clips. Scenes 1-4 and 7 unchanged. No baked-in game UI in the two replacement scene images."
+  "notes": "Scene 5 is now interactive: START SKANNING triggers a blue scan pass, reconstructed hieroglyphs and coordinates before allowing progression. Scene 6 shows the coordinate-analysis result without the redundant 'Et punkt ute i ørkenen' headline. Other scenes/gameplay unchanged."
 }

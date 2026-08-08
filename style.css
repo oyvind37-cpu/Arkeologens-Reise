@@ -1558,3 +1558,138 @@ body{
     }
   }
 }
+
+
+/* =========================================================
+   v5.3.8 – INTERAKTIV SKANNING I SCENE 5
+   ========================================================= */
+#prologue .scan-overlay{
+  position:absolute;
+  z-index:2;
+  inset:0;
+  pointer-events:none;
+  opacity:0;
+  transition:opacity .35s ease;
+  overflow:hidden;
+}
+#prologue .scan-overlay.active{opacity:1}
+
+#prologue .scan-grid{
+  position:absolute;
+  left:7%;
+  right:7%;
+  top:18%;
+  height:34%;
+  border:1px solid rgba(73,190,255,.5);
+  background:
+    linear-gradient(rgba(30,175,255,.09) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(30,175,255,.09) 1px,transparent 1px);
+  background-size:24px 24px;
+  box-shadow:0 0 34px rgba(39,174,255,.28) inset,0 0 28px rgba(39,174,255,.25);
+  opacity:.75;
+}
+#prologue .scan-line{
+  position:absolute;
+  left:5%;
+  right:5%;
+  top:19%;
+  height:3px;
+  background:#63ceff;
+  box-shadow:0 0 8px #63ceff,0 0 22px #2ca8ff;
+  opacity:0;
+}
+#prologue .scan-overlay.active .scan-line{
+  opacity:1;
+  animation:auroraScan 2.8s ease-in-out forwards;
+}
+@keyframes auroraScan{
+  0%{transform:translateY(0)}
+  48%{transform:translateY(245px)}
+  100%{transform:translateY(70px)}
+}
+
+#prologue .scan-hieroglyphs{
+  position:absolute;
+  left:12%;
+  right:12%;
+  top:22%;
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:9px 16px;
+  color:#8ddcff;
+  font-size:clamp(1.15rem,5vw,1.8rem);
+  text-align:center;
+  text-shadow:0 0 12px #2faeff;
+  opacity:0;
+  transform:scale(.94);
+  transition:opacity .65s ease 1.05s,transform .65s ease 1.05s;
+}
+#prologue .scan-overlay.active .scan-hieroglyphs{
+  opacity:.88;
+  transform:scale(1);
+}
+#prologue .scan-status{
+  position:absolute;
+  left:50%;
+  top:48%;
+  transform:translateX(-50%);
+  white-space:nowrap;
+  padding:7px 12px;
+  border:1px solid rgba(90,200,255,.65);
+  border-radius:999px;
+  background:rgba(0,12,24,.78);
+  color:#91dcff;
+  font:800 .68rem system-ui,-apple-system,sans-serif;
+  letter-spacing:.10em;
+  box-shadow:0 0 20px rgba(37,162,255,.22);
+}
+#prologue .scan-coordinates{
+  position:absolute;
+  left:50%;
+  top:29%;
+  transform:translate(-50%,12px);
+  min-width:205px;
+  padding:12px 18px;
+  border:1px solid rgba(91,205,255,.78);
+  border-radius:12px;
+  background:rgba(0,15,28,.88);
+  color:#9de5ff;
+  text-align:center;
+  opacity:0;
+  transition:opacity .45s ease,transform .45s ease;
+  box-shadow:0 0 28px rgba(43,177,255,.32);
+}
+#prologue .scan-coordinates small{
+  display:block;
+  margin-bottom:5px;
+  font:800 .57rem system-ui,-apple-system,sans-serif;
+  letter-spacing:.1em;
+}
+#prologue .scan-coordinates strong{
+  display:block;
+  font:900 1.1rem ui-monospace,SFMono-Regular,Menlo,monospace;
+  line-height:1.28;
+}
+#prologue .scan-overlay.complete .scan-coordinates{
+  opacity:1;
+  transform:translate(-50%,0);
+}
+#prologue .scan-overlay.complete .scan-hieroglyphs{opacity:.28}
+#prologue .scan-overlay.complete .scan-line{opacity:.2}
+
+/* Keep the magical scan inside the movie frame on portrait iPhone. */
+@media (orientation:portrait) and (max-width:700px){
+  #prologue .scan-overlay{
+    top:calc(64px + env(safe-area-inset-top));
+    height:56.25vw;
+    bottom:auto;
+  }
+  #prologue .scan-grid{
+    top:10%;
+    height:72%;
+  }
+  #prologue .scan-line{top:12%}
+  #prologue .scan-hieroglyphs{top:18%}
+  #prologue .scan-status{top:79%}
+  #prologue .scan-coordinates{top:28%}
+}

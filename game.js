@@ -120,6 +120,12 @@ const prologueStep=$("prologueStep");
 const prologueBack=$("prologueBack");
 const prologueNext=$("prologueNext");
 const prologueSkip=$("prologueSkip");
+const scanOverlay=$("scanOverlay");
+const scanStatus=$("scanStatus");
+const scanCoordinates=$("scanCoordinates");
+let scanComplete=false;
+let scanRunning=false;
+
 
 const prologueScenes=[
   {
@@ -148,15 +154,16 @@ const prologueScenes=[
   },
   {
     kicker:"DET EGYPTISKE MUSEUM · KAIRO",
-    title:"Les rullene uten å åpne dem",
+    title:"Undersøk de forseglede rullene",
     video:"prologue_05_v537.mp4",
-    text:"Aurora reiser til Kairo. Teamet bruker avansert røntgenskanning, virtuell utrulling og mønstergjenkjenning med kunstig intelligens for å forsøke å lese teksten uten å bryte seglene."
+    interactive:"scan",
+    text:"Den nye skanneren kan lese lagene i rullen uten å bryte seglet. Start analysen og se om tegnene fortsatt kan gjenfinnes."
   },
   {
     kicker:"KOORDINATENE",
-    title:"Et punkt ute i ørkenen",
-    video:"prologue_06_v537.mp4",
-    text:"Etter flere dager dukker det opp koordinater i teksten – lengde- og breddegrad til et punkt utenfor de kjente funnstedene. Aurora bestemmer seg for å undersøke stedet."
+    title:"Analysen gir et resultat",
+    video:"prologue_06_v538.mp4",
+    text:"Blant tegnene dukker det opp lengde- og breddegrader. De peker mot et punkt langt ute i ørkenen, utenfor de kjente funnstedene. Aurora bestemmer seg for å undersøke stedet."
   },
   {
     kicker:"UT I ØRKENEN",
@@ -174,7 +181,20 @@ function renderPrologue(){
   prologueText.textContent=scene.text;
   prologueStep.textContent=String(prologueIndex+1);
   prologueBack.disabled=prologueIndex===0;
-  prologueNext.textContent=prologueIndex===prologueScenes.length-1?"REIS TIL EGYPT":"FORTSETT";
+
+  scanRunning=false;
+  scanComplete=false;
+  if(scanOverlay){
+    scanOverlay.classList.remove("active","complete");
+    scanOverlay.setAttribute("aria-hidden","true");
+  }
+  if(scanStatus) scanStatus.textContent="SKANNER LAGENE …";
+
+  if(scene.interactive==="scan"){
+    prologueNext.textContent="START SKANNING";
+  }else{
+    prologueNext.textContent=prologueIndex===prologueScenes.length-1?"REIS TIL EGYPT":"FORTSETT";
+  }
 
   prologueVideo.pause();
   prologueVideo.src=scene.video;
@@ -205,6 +225,44 @@ function openPrologue(){
 startBtn.addEventListener("click",openPrologue);
 
 prologueNext.onclick=()=>{
+  const scene=prologueScenes[prologueIndex];
+
+  if(scene.interactive==="scan"){
+    if(scanRunning) return;
+
+    if(!scanComplete){
+      scanRunning=true;
+      prologueNext.disabled=true;
+      prologueNext.textContent="SKANNER …";
+      prologueText.textContent="Røntgenlagene bygges opp digitalt. Tegnene ligger skjult inne i den forseglede rullen.";
+
+      if(scanOverlay){
+        scanOverlay.setAttribute("aria-hidden","false");
+        scanOverlay.classList.add("active");
+      }
+
+      setTimeout(()=>{
+        if(scanStatus) scanStatus.textContent="HIEROGLYFER IDENTIFISERT";
+        prologueText.textContent="Der … tegnene er fortsatt bevart mellom lagene. Systemet rekonstruerer teksten uten at seglet brytes.";
+      },1500);
+
+      setTimeout(()=>{
+        if(scanOverlay) scanOverlay.classList.add("complete");
+        if(scanStatus) scanStatus.textContent="KOORDINATER FUNNET";
+        scanComplete=true;
+        scanRunning=false;
+        prologueNext.disabled=false;
+        prologueNext.textContent="SE RESULTATET";
+        prologueText.textContent="Analysen finner et mønster i teksten — og to tallsekvenser som ser ut som geografiske koordinater.";
+      },3200);
+      return;
+    }
+
+    prologueIndex++;
+    renderPrologue();
+    return;
+  }
+
   if(prologueIndex<prologueScenes.length-1){
     prologueIndex++;
     renderPrologue();
@@ -222,6 +280,8 @@ prologueSkip.onclick=beginEgypt;
 
 prologueVideo.addEventListener("ended",()=>{
   if(!prologue.classList.contains("active"))return;
+  const scene=prologueScenes[prologueIndex];
+  if(scene && scene.interactive==="scan") return;
   if(prologueIndex<prologueScenes.length-1){
     prologueIndex++;
     renderPrologue();
