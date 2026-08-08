@@ -1,6 +1,6 @@
 {
   "name": "Arkeologens Reise",
-  "version": "5.3.8",
+  "version": "5.3.9",
   "entry": "index.html",
   "platform": "HTML5 / GitHub Pages",
   "files": [
@@ -12,5 +12,5 @@
     "temple.jpg",
     "mystisk_musikk.mp3"
   ],
-  "notes": "Scene 5 is now interactive: START SKANNING triggers a blue scan pass, reconstructed hieroglyphs and coordinates before allowing progression. Scene 6 shows the coordinate-analysis result without the redundant 'Et punkt ute i ørkenen' headline. Other scenes/gameplay unchanged."
+  "notes": "Mobile gameplay repair. Prologue remains unchanged. Egypt HUD/dialog/controls are separated on portrait iPhone. Chamber gets a protected central stage, visible wall/floor depth, isolated HUD and dialog rows, puzzle moved into scene, controls fixed to bottom, and Aurora/chest/compass z-order corrected."
 }

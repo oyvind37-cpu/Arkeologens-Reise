@@ -450,6 +450,9 @@ enterChamberBtn.onclick=()=>{
 
   setTimeout(()=>{
     show(chamber);
+    chamberCamera.style.transform="";
+    chamberCamera.style.filter="";
+    chamberCamera.classList.remove("settled");
     chamberCamera.classList.add("entering");
     chamberX=3;
     chamberAurora.style.left=chamberX+"%";
