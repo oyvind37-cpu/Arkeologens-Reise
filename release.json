@@ -1,6 +1,6 @@
 {
   "name": "Arkeologens Reise",
-  "version": "5.3",
+  "version": "5.3.1",
   "entry": "index.html",
   "platform": "HTML5 / GitHub Pages",
   "files": [
@@ -12,5 +12,5 @@
     "temple.jpg",
     "mystisk_musikk.mp3"
   ],
-  "notes": "Seven-scene cinematic prologue using real MP4 clips with subtle camera motion. Auto-advance after each 9-second clip, HOPP OVER always available, manual FORTSETT retained. Music continues throughout."
+  "notes": "iPhone cinematic hotfix: seven-scene counter, gentler portrait video framing, no aggressive crop, stable lower text card, improved safe areas and landscape framing."
 }
