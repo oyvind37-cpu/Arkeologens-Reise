@@ -680,3 +680,200 @@ button{font:inherit;color:inherit;border:0}.screen{display:none;position:absolut
 
 /* Fjern gammel dørflate når inngangen er ferdig åpnet */
 .inner-door.passed{opacity:0;visibility:hidden;transition:opacity .55s ease,visibility .55s}
+
+
+/* =========================================================
+   v5.2.1 – VISUELL STABILISERING / GODKJENT AURORA
+   ========================================================= */
+
+/* Intro.png inneholder allerede tittel og START REISEN-grafikken.
+   Vi fjerner duplikat-tekst og gjør den ekte knappen til et usynlig treffområde
+   direkte over knappen i illustrasjonen. */
+.correct-title{display:none!important}
+#startBtn{
+  left:24%!important;
+  right:24%!important;
+  top:41%!important;
+  bottom:auto!important;
+  height:76px!important;
+  background:transparent!important;
+  border:0!important;
+  color:transparent!important;
+  box-shadow:none!important;
+  animation:none!important;
+}
+.intro-quote{
+  bottom:17%!important;
+  left:6%!important;
+  right:6%!important;
+  padding:10px 12px!important;
+  max-height:112px;
+}
+.intro-quote p{font-size:clamp(.82rem,3.5vw,.96rem)!important}
+
+/* Den gamle CSS-dukken skjules. Aurora er nå én godkjent,
+   fotorealistisk karakter-sprite fra karakterplansjen. */
+.human-rig{
+  position:absolute!important;
+  inset:0!important;
+  transform-origin:50% 100%!important;
+  animation:none!important;
+}
+.human-rig > *:not(.aurora-character-sprite){display:none!important}
+.aurora-character-sprite{
+  position:absolute;
+  inset:0;
+  background:url("aurora_character_v521.png") center bottom/contain no-repeat;
+  filter:drop-shadow(0 8px 7px rgba(0,0,0,.5));
+  transform-origin:50% 100%;
+}
+
+/* Character sizes: more human scale, less oversized head. */
+.aurora{
+  width:86px!important;
+  height:236px!important;
+  bottom:29%!important;
+}
+.chamber-aurora{
+  width:78px!important;
+  height:212px!important;
+  bottom:22%!important;
+}
+.desert-aurora{
+  width:84px!important;
+  height:230px!important;
+  bottom:21%!important;
+}
+.shadow{left:8px!important;width:70px!important;height:14px!important}
+.chamber-shadow{left:7px!important;width:66px!important;height:13px!important}
+.desert-shadow{left:7px!important;width:70px!important;height:14px!important}
+
+/* Direction is kept on the rig; animation happens on sprite child, so transforms
+   don't fight each other. */
+.aurora.face-left .human-rig,
+.chamber-aurora.face-left .human-rig,
+.desert-aurora.face-left .human-rig{transform:scaleX(-1)!important}
+
+.aurora:not(.walk):not(.jump) .aurora-character-sprite,
+.chamber-aurora:not(.walk) .aurora-character-sprite,
+.desert-aurora:not(.walk) .aurora-character-sprite{
+  animation:auroraIdle521 3.2s ease-in-out infinite;
+}
+.aurora.walk .aurora-character-sprite,
+.chamber-aurora.walk .aurora-character-sprite,
+.desert-aurora.walk .aurora-character-sprite{
+  animation:auroraWalk521 .48s ease-in-out infinite alternate;
+}
+.aurora.observe .aurora-character-sprite{
+  animation:auroraInspect521 1.2s ease-in-out;
+}
+.aurora.jump .aurora-character-sprite{
+  animation:auroraJump521 .82s cubic-bezier(.22,.65,.35,1);
+}
+
+@keyframes auroraIdle521{
+  0%,100%{transform:translateY(0) rotate(0deg) scaleY(1)}
+  50%{transform:translateY(-1.5px) rotate(.25deg) scaleY(1.004)}
+}
+@keyframes auroraWalk521{
+  0%{transform:translateY(0) rotate(-1.2deg) translateX(-1px)}
+  50%{transform:translateY(-3px) rotate(.8deg)}
+  100%{transform:translateY(0) rotate(1.1deg) translateX(1px)}
+}
+@keyframes auroraInspect521{
+  0%,100%{transform:none}
+  45%,72%{transform:translateY(3px) rotate(2deg) scale(.985)}
+}
+@keyframes auroraJump521{
+  0%,100%{transform:translateY(0)}
+  48%{transform:translateY(-115px)}
+}
+
+/* Don't also bob the whole parent; it caused a puppet-like double animation. */
+.aurora.walk,.chamber-aurora.walk,.desert-aurora.walk{animation:none!important}
+
+/* Compass: crisp image, high z-index, obvious click target. */
+.compass-artifact{
+  position:absolute!important;
+  left:50%!important;
+  bottom:40%!important;
+  width:82px!important;
+  height:82px!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:50%!important;
+  background:url("compass_v521.png") center/contain no-repeat!important;
+  opacity:0;
+  z-index:75!important;
+  filter:drop-shadow(0 0 20px #ffd35b);
+  cursor:pointer;
+}
+.compass-artifact.show{animation:artifactRise521 1.15s forwards,compassPulse521 1.4s 1.15s ease-in-out infinite}
+.compass-artifact.collected{pointer-events:none}
+@keyframes artifactRise521{
+  0%{opacity:0;transform:translate(-50%,34px) scale(.45)}
+  70%{opacity:1;transform:translate(-50%,-48px) scale(1.12)}
+  100%{opacity:1;transform:translate(-50%,-34px) scale(1)}
+}
+@keyframes compassPulse521{
+  0%,100%{filter:drop-shadow(0 0 14px #ffd35b)}
+  50%{filter:drop-shadow(0 0 32px #ffd35b);transform:translate(-50%,-34px) scale(1.06)}
+}
+.journal-sketch .sketch-compass{
+  width:118px;height:118px;font-size:0!important;
+  background:url("compass_v521.png") center/contain no-repeat;
+  filter:grayscale(.65) sepia(.3)!important;
+}
+
+/* Text/layout: stop the boxes from colliding on iPhone. */
+.hud,.chamber-hud,.desert-hud{
+  gap:12px;
+  line-height:1.12;
+}
+.hud>div,.chamber-hud>div,.desert-hud>div{min-width:0;max-width:52%}
+.hud b,.chamber-hud b,.desert-hud b{font-size:clamp(.88rem,3.8vw,1.05rem)}
+.hud small,.chamber-hud small,.desert-hud small{font-size:clamp(.72rem,3.1vw,.86rem)}
+
+.dialog,.chamber-dialog,.desert-dialog{
+  top:15.5%!important;
+  left:5%!important;
+  right:5%!important;
+  padding:.65rem .75rem!important;
+  min-height:86px;
+  align-items:flex-start!important;
+}
+.dialog p,.chamber-dialog p,.desert-dialog p{
+  font-size:clamp(.78rem,3.4vw,.9rem)!important;
+  line-height:1.32!important;
+  overflow-wrap:anywhere;
+}
+.dialog-face,.chamber-dialog .dialog-face,.desert-dialog .dialog-face{
+  width:44px!important;height:44px!important;
+}
+
+.symbol-puzzle{
+  top:32.5%!important;
+  width:min(330px,82%)!important;
+  padding:9px 10px!important;
+}
+.symbol-puzzle h3{font-size:clamp(.88rem,4vw,1rem)!important}
+.symbol-puzzle p{font-size:.74rem!important;margin:.18rem 0 .42rem!important}
+.symbol-puzzle button{width:54px!important;height:46px!important}
+
+.chapter-complete{
+  top:32%!important;
+  left:7%!important;right:7%!important;
+  padding:16px!important;
+}
+.chapter-complete h2{font-size:clamp(1.25rem,6vw,1.6rem)!important}
+
+/* Journal gets more breathing room on small screens. */
+.journal-book{inset:2.2%!important;padding:9px!important}
+.journal-page{padding:14px 15px!important}
+.journal-page header{gap:10px;align-items:center}
+.journal-page header span{font-size:clamp(1.1rem,5.5vw,1.3rem)!important}
+.journal-sketch{height:min(180px,23vh)!important}
+.journal-page blockquote{font-size:clamp(.82rem,3.8vw,.95rem)!important}
+
+/* Prevent character clipping off the right edge in the desert. */
+.desert-aurora{max-width:84px}

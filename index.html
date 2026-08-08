@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
 <meta name="theme-color" content="#0b0704">
-<title>Arkeologens Reise 5.2</title>
+<title>Arkeologens Reise 5.2.1</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -25,7 +25,7 @@
 
   <audio id="musicTrack" src="mystisk_musikk.mp3" preload="auto" loop></audio>
 
-  <section id="game" class="screen"><div class="build-marker">v5.2</div>
+  <section id="game" class="screen"><div class="build-marker">v5.2.1</div>
     <div id="world">
       <div class="temple-bg"></div><div class="sunbeam"></div><div class="mist"></div>
       <div class="ground"></div>
@@ -45,8 +45,7 @@
       <div id="wowLight" class="wow-light"></div>
 
       <div id="aurora" class="aurora"><div class="shadow"></div>
-        <div class="body human-rig">
-          <div class="head"><div class="face"></div><div class="hair"></div><div class="blink"></div></div>
+        <div class="body human-rig"><div class="aurora-character-sprite"></div></div></div>
           <div class="neck"></div>
           <div class="shoulders"></div>
           <div class="field-jacket"></div>
@@ -116,11 +115,10 @@
       <div class="treasure-box"></div>
     </div>
 
-    <div id="compassArtifact" class="compass-artifact">🧭</div>
+    <button id="compassArtifact" class="compass-artifact" aria-label="Ta opp det tapte kompasset"></button>
 
     <div id="chamberAurora" class="chamber-aurora"><div class="chamber-shadow"></div>
-        <div class="chamber-body human-rig">
-          <div class="chamber-head"><div class="chamber-face"></div><div class="chamber-hair"></div><div class="blink"></div></div>
+        <div class="chamber-body human-rig"><div class="aurora-character-sprite"></div></div></div>
           <div class="neck"></div>
           <div class="shoulders"></div>
           <div class="field-jacket"></div>
@@ -178,8 +176,7 @@
     <div class="desert-wind"></div>
 
     <div id="desertAurora" class="desert-aurora"><div class="desert-shadow"></div>
-        <div class="desert-body human-rig">
-          <div class="desert-head"><div class="desert-face"></div><div class="desert-hair"></div><div class="blink"></div></div>
+        <div class="desert-body human-rig"><div class="aurora-character-sprite"></div></div></div>
           <div class="neck"></div>
           <div class="shoulders"></div>
           <div class="field-jacket"></div>

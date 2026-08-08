@@ -104,7 +104,7 @@ updateMusicButtons();
 
 const resetGameBtn=$("resetGameBtn");
 resetGameBtn.onclick=()=>{
-  localStorage.removeItem("aurora_compass");
+  localStorage.removeItem("aurora_compass"); localStorage.removeItem("aurora_compass_v521");
   location.reload();
 };
 
@@ -270,7 +270,7 @@ function loop(t){
 const chamber=$("chamber"),journal=$("journal"),desert=$("desert"),chamberAurora=$("chamberAurora"),chamberCamera=$("chamberCamera"),innerDoor=$("innerDoor"),cinematicBars=$("cinematicBars"),transitionFade=$("transitionFade"),chamberExitFade=$("chamberExitFade"),inventoryBadge=$("inventoryBadge");
 const chamberText=$("chamberDialogText"),chamberObjective=$("chamberObjective"),chamberProgress=$("chamberProgress");
 const sarcophagus=$("sarcophagus"),symbolPuzzle=$("symbolPuzzle"),treasureChest=$("treasureChest"),compassArtifact=$("compassArtifact");
-let chamberX=7,chamberLeft=false,chamberRight=false,chamberStage=0,glyphs=[],compassCollected=localStorage.getItem("aurora_compass")==="yes";
+let chamberX=7,chamberLeft=false,chamberRight=false,chamberStage=0,glyphs=[],compassCollected=localStorage.getItem("aurora_compass_v521")==="yes";
 
 function chamberSay(text){chamberText.textContent=text}
 function chamberGoal(text,n){chamberObjective.textContent=text;chamberProgress.textContent=n+" / 3"}
@@ -379,16 +379,21 @@ $("chamberInspect").onclick=()=>{
     chamberStage=3;
     treasureChest.classList.add("open");
     compassArtifact.classList.add("show");
-    chamberGoal("Før funnet i feltdagboken",3);
-    chamberSay("Et kompass... men nålen peker ikke mot nord. Den peker mot Mykene.");
-    setTimeout(()=>show(journal),2500);
+    chamberGoal("Ta opp kompasset",3);
+    chamberSay("Et kompass... men nålen peker ikke mot nord. Trykk på kompasset for å undersøke funnet.");
   }
+};
+
+compassArtifact.onclick=()=>{
+  if(chamberStage!==3 || compassCollected)return;
+  compassArtifact.classList.add("collected");
+  setTimeout(()=>show(journal),450);
 };
 
 $("closeJournal").onclick=()=>{
   if(!compassCollected){
     compassCollected=true;
-    localStorage.setItem("aurora_compass","yes");
+    localStorage.setItem("aurora_compass_v521","yes");
   }
   show(chamber);
   compassArtifact.classList.add("collected");
