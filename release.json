@@ -1,0 +1,16 @@
+{
+  "name": "Arkeologens Reise",
+  "version": "5.2.3",
+  "entry": "index.html",
+  "platform": "HTML5 / GitHub Pages",
+  "files": [
+    "aurora_face.jpg",
+    "game.js",
+    "index.html",
+    "intro.png",
+    "style.css",
+    "temple.jpg",
+    "mystisk_musikk.mp3"
+  ],
+  "notes": "Clean hotfix rebuilt from stable 5.2.1. Removes stacked scenes, restores exclusive screen switching, restores START REISEN, hides unused HOPP, keeps realistic Aurora, keeps visible compass, improves mobile layout."
+}
